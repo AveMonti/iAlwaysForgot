@@ -1,0 +1,83 @@
+//
+//  RealmService.swift
+//  iAlwaysForgot
+//
+//  Created by Mateusz Chojnacki on 31.01.2018.
+//  Copyright © 2018 Mateusz Chojnacki. All rights reserved.
+//
+
+import Foundation
+import RealmSwift
+
+class RealmService{
+    private init(){} //singletone
+    static let shared = RealmService()
+    
+    var realm = try! Realm()
+    
+        // TaskList
+    
+    func getAll() -> [TaskListR] {
+        let resoults: Results<TaskListR> = realm.objects(TaskListR.self)
+        return Array(resoults)
+    }
+    
+    func update(taskList: TaskListR, taskListName: String){
+        do{
+            try realm.write {
+              taskList.nameTaskList = taskListName
+            }
+        }catch let error as NSError {
+            post(error)
+        }
+    }
+    
+    func delete(taskList: TaskListR) {
+        do {
+            try realm.write {
+                realm.delete(taskList)
+            }
+        } catch let error as NSError {
+            post(error)
+        }
+    }
+    
+    func create(taskList: TaskListR){
+        do{
+            try realm.write {
+                realm.add(taskList)
+            }
+        } catch let error as NSError {
+            post(error)
+        }
+    }
+    
+    // SubTask
+    
+    func addSubTask(taskList: TaskListR, subTask: SubTaskR){
+        do{
+            try realm.write {
+                taskList.subTaskList.append(subTask)
+            }
+        } catch let error as NSError{
+            post(error)
+        }
+    }
+    
+    func deleteSubTask(taskList: TaskListR, index: Int){
+        do{
+            try realm.write {
+                taskList.subTaskList.remove(at: index)
+            }
+            
+        } catch let error as NSError{
+            post(error)
+        }
+    }
+    
+    /// Notyfication Center
+    
+    func post(_ error: Error){
+        NotificationCenter.default.post(name: NSNotification.Name("RealmError"), object: error)
+    }
+}

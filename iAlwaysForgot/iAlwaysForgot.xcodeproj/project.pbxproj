@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		9EED55FC1FE1A4BD26F12217 /* Pods_iAlwaysForgot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82357579461CF756E0D10BEA /* Pods_iAlwaysForgot.framework */; };
 		D34B64632022712C00E2C115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64622022712C00E2C115 /* AppDelegate.swift */; };
-		D34B64652022712C00E2C115 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64642022712C00E2C115 /* ViewController.swift */; };
+		D34B64652022712C00E2C115 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64642022712C00E2C115 /* MainViewController.swift */; };
 		D34B64682022712C00E2C115 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34B64662022712C00E2C115 /* Main.storyboard */; };
 		D34B646A2022712C00E2C115 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34B64692022712C00E2C115 /* Assets.xcassets */; };
 		D34B646D2022712C00E2C115 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34B646B2022712C00E2C115 /* LaunchScreen.storyboard */; };
+		D34B64762022779F00E2C115 /* TaskListR.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64752022779F00E2C115 /* TaskListR.swift */; };
+		D34B64782022783600E2C115 /* SubTaskR.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64772022783600E2C115 /* SubTaskR.swift */; };
+		D34B647A202278C700E2C115 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B6479202278C700E2C115 /* RealmService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +24,14 @@
 		82357579461CF756E0D10BEA /* Pods_iAlwaysForgot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAlwaysForgot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34B645F2022712C00E2C115 /* iAlwaysForgot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAlwaysForgot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34B64622022712C00E2C115 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D34B64642022712C00E2C115 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D34B64642022712C00E2C115 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D34B64672022712C00E2C115 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D34B64692022712C00E2C115 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D34B646C2022712C00E2C115 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D34B646E2022712C00E2C115 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D34B64752022779F00E2C115 /* TaskListR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListR.swift; sourceTree = "<group>"; };
+		D34B64772022783600E2C115 /* SubTaskR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskR.swift; sourceTree = "<group>"; };
+		D34B6479202278C700E2C115 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,14 +84,25 @@
 		D34B64612022712C00E2C115 /* iAlwaysForgot */ = {
 			isa = PBXGroup;
 			children = (
+				D34B6474202275CA00E2C115 /* realmModel */,
 				D34B64622022712C00E2C115 /* AppDelegate.swift */,
-				D34B64642022712C00E2C115 /* ViewController.swift */,
+				D34B64642022712C00E2C115 /* MainViewController.swift */,
 				D34B64662022712C00E2C115 /* Main.storyboard */,
 				D34B64692022712C00E2C115 /* Assets.xcassets */,
 				D34B646B2022712C00E2C115 /* LaunchScreen.storyboard */,
 				D34B646E2022712C00E2C115 /* Info.plist */,
 			);
 			path = iAlwaysForgot;
+			sourceTree = "<group>";
+		};
+		D34B6474202275CA00E2C115 /* realmModel */ = {
+			isa = PBXGroup;
+			children = (
+				D34B64752022779F00E2C115 /* TaskListR.swift */,
+				D34B64772022783600E2C115 /* SubTaskR.swift */,
+				D34B6479202278C700E2C115 /* RealmService.swift */,
+			);
+			path = realmModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +236,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D34B64652022712C00E2C115 /* ViewController.swift in Sources */,
+				D34B64782022783600E2C115 /* SubTaskR.swift in Sources */,
+				D34B64652022712C00E2C115 /* MainViewController.swift in Sources */,
 				D34B64632022712C00E2C115 /* AppDelegate.swift in Sources */,
+				D34B64762022779F00E2C115 /* TaskListR.swift in Sources */,
+				D34B647A202278C700E2C115 /* RealmService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
