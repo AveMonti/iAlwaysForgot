@@ -10,6 +10,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="dHA-dg-vaU">
+            <objects>
+                <viewController id="owx-0b-H1L" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ql4-kj-847">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Xtd-yI-vQF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nt-dy-Dva" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1218" y="-702"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -50,6 +65,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="pdq-P8-Wj9">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="rQV-Q4-cEy">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7HW-GE-Gu8">
+                                <rect key="frame" x="16" y="0.0" width="154" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="logo"/>
+                            </button>
+                            <connections>
+                                <segue destination="owx-0b-H1L" kind="show" id="Uvw-wG-FUr"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xfa-dO-MUe">
                             <connections>
                                 <action selector="addTaskList:" destination="BYZ-38-t0r" id="geT-zN-JRg"/>
@@ -145,4 +170,7 @@
             <point key="canvasLocation" x="-417" y="34"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="100" height="50"/>
+    </resources>
 </document>
