@@ -84,14 +84,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // table view
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return realm.getAll().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "taskListCell")
         
-        cell.textLabel?.text = realm.getAll()[indexPath.row].nameTaskList
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskListCell") as! TaskListTableViewCell
+        cell.countLabel.text = "\([indexPath.row])."
+        cell.nameLabel.text = realm.getAll()[indexPath.row].nameTaskList
+        cell.subtaskCountLabel.text = "\(realm.getAll()[indexPath.row].subTaskList.count) tasks"
+        
+        cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 3
+       
         
         return cell
     }

@@ -52,14 +52,66 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskListCell" id="UxK-oB-JAP">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskListCell" rowHeight="50" id="UxK-oB-JAP" customClass="TaskListTableViewCell" customModule="iAlwaysForgot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UxK-oB-JAP" id="hTw-uR-yTQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qg-f5-NCg">
+                                                    <rect key="frame" x="11" y="2" width="353" height="46"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xum-Bm-0bd">
+                                                            <rect key="frame" x="8" y="13" width="39" height="21"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work task ToDo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWm-AH-e99">
+                                                            <rect key="frame" x="60" y="13" width="220" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="ANl-zu-IFG"/>
+                                                                <constraint firstAttribute="width" constant="220" id="QA9-hD-Cgf"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 tasks" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJ7-ck-RUr">
+                                                            <rect key="frame" x="282" y="13" width="63" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="Bo4-yB-iGL"/>
+                                                                <constraint firstAttribute="width" constant="63" id="FId-xw-y8q"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.78978488869863017" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="IJ7-ck-RUr" firstAttribute="centerY" secondItem="0qg-f5-NCg" secondAttribute="centerY" id="3vi-fY-3Kf"/>
+                                                        <constraint firstItem="iWm-AH-e99" firstAttribute="leading" secondItem="xum-Bm-0bd" secondAttribute="trailing" constant="13" id="EEh-an-syd"/>
+                                                        <constraint firstItem="xum-Bm-0bd" firstAttribute="leading" secondItem="0qg-f5-NCg" secondAttribute="leading" constant="8" id="PGn-tc-qBc"/>
+                                                        <constraint firstItem="iWm-AH-e99" firstAttribute="baseline" secondItem="xum-Bm-0bd" secondAttribute="baseline" id="R7B-uo-zCr"/>
+                                                        <constraint firstItem="xum-Bm-0bd" firstAttribute="centerY" secondItem="0qg-f5-NCg" secondAttribute="centerY" id="Sw8-fC-gY9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="IJ7-ck-RUr" secondAttribute="trailing" constant="8" id="Uq3-B2-K2r"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0qg-f5-NCg" firstAttribute="leading" secondItem="hTw-uR-yTQ" secondAttribute="leading" constant="11" id="0gi-ue-ajH"/>
+                                                <constraint firstAttribute="bottom" secondItem="0qg-f5-NCg" secondAttribute="bottom" constant="2" id="UqO-GV-Ppz"/>
+                                                <constraint firstItem="0qg-f5-NCg" firstAttribute="top" secondItem="hTw-uR-yTQ" secondAttribute="top" constant="2" id="ZRa-mt-XIz"/>
+                                                <constraint firstAttribute="trailing" secondItem="0qg-f5-NCg" secondAttribute="trailing" constant="11" id="lRz-wg-Pmh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cellView" destination="0qg-f5-NCg" id="OFh-U0-2Zm"/>
+                                            <outlet property="countLabel" destination="xum-Bm-0bd" id="TBe-tM-4HZ"/>
+                                            <outlet property="nameLabel" destination="iWm-AH-e99" id="Fst-Ko-qw5"/>
+                                            <outlet property="subtaskCountLabel" destination="IJ7-ck-RUr" id="yDH-5D-sjA"/>
                                             <segue destination="JDm-ng-Nnb" kind="show" id="j7r-dx-lRn"/>
                                         </connections>
                                     </tableViewCell>
