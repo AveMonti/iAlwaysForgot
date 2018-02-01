@@ -28,22 +28,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.reloadData()
     }
     
-
-    
-    func tableView(_ tableView: UITableView,
-                   leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let closeAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            self.realm.delete(taskList: self.realm.getAll()[indexPath.row])
-            self.updateUI()
-            success(true)
-        })
-        closeAction.image = UIImage(named: "tick")
-        closeAction.backgroundColor = .green
-
-        return UISwipeActionsConfiguration(actions: [closeAction])
-
-    }
-    
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
