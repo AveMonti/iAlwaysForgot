@@ -18,6 +18,7 @@
 		D34B64762022779F00E2C115 /* TaskListR.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64752022779F00E2C115 /* TaskListR.swift */; };
 		D34B64782022783600E2C115 /* SubTaskR.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64772022783600E2C115 /* SubTaskR.swift */; };
 		D34B647A202278C700E2C115 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B6479202278C700E2C115 /* RealmService.swift */; };
+		D39F86B320239DFA00D089C2 /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39F86B220239DFA00D089C2 /* TaskListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D34B64752022779F00E2C115 /* TaskListR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListR.swift; sourceTree = "<group>"; };
 		D34B64772022783600E2C115 /* SubTaskR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskR.swift; sourceTree = "<group>"; };
 		D34B6479202278C700E2C115 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		D39F86B220239DFA00D089C2 /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		D34B64612022712C00E2C115 /* iAlwaysForgot */ = {
 			isa = PBXGroup;
 			children = (
+				D39F86B120239C9900D089C2 /* cellModel */,
 				D34B6474202275CA00E2C115 /* realmModel */,
 				D34B64622022712C00E2C115 /* AppDelegate.swift */,
 				D34B64642022712C00E2C115 /* MainViewController.swift */,
@@ -109,6 +112,14 @@
 				D34B6479202278C700E2C115 /* RealmService.swift */,
 			);
 			path = realmModel;
+			sourceTree = "<group>";
+		};
+		D39F86B120239C9900D089C2 /* cellModel */ = {
+			isa = PBXGroup;
+			children = (
+				D39F86B220239DFA00D089C2 /* TaskListTableViewCell.swift */,
+			);
+			path = cellModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D39F86B320239DFA00D089C2 /* TaskListTableViewCell.swift in Sources */,
 				6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */,
 				D34B64782022783600E2C115 /* SubTaskR.swift in Sources */,
 				D34B64652022712C00E2C115 /* MainViewController.swift in Sources */,

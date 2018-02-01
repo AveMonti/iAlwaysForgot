@@ -22,6 +22,8 @@ class SubTasksViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
         return (subTasks?.subTaskList.count)!
     }
     
