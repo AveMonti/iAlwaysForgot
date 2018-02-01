@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE401C32023033A00A2F218 /* SubTasksViewController.swift */; };
 		9EED55FC1FE1A4BD26F12217 /* Pods_iAlwaysForgot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82357579461CF756E0D10BEA /* Pods_iAlwaysForgot.framework */; };
 		D34B64632022712C00E2C115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64622022712C00E2C115 /* AppDelegate.swift */; };
 		D34B64652022712C00E2C115 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64642022712C00E2C115 /* MainViewController.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		05FC2E905C393A4630D9C13A /* Pods-iAlwaysForgot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAlwaysForgot.release.xcconfig"; path = "Pods/Target Support Files/Pods-iAlwaysForgot/Pods-iAlwaysForgot.release.xcconfig"; sourceTree = "<group>"; };
 		52BC2A254517A6B9FBFBFB70 /* Pods-iAlwaysForgot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAlwaysForgot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iAlwaysForgot/Pods-iAlwaysForgot.debug.xcconfig"; sourceTree = "<group>"; };
+		6EE401C32023033A00A2F218 /* SubTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTasksViewController.swift; sourceTree = "<group>"; };
 		82357579461CF756E0D10BEA /* Pods_iAlwaysForgot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAlwaysForgot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34B645F2022712C00E2C115 /* iAlwaysForgot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAlwaysForgot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34B64622022712C00E2C115 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				D34B6474202275CA00E2C115 /* realmModel */,
 				D34B64622022712C00E2C115 /* AppDelegate.swift */,
 				D34B64642022712C00E2C115 /* MainViewController.swift */,
+				6EE401C32023033A00A2F218 /* SubTasksViewController.swift */,
 				D34B64662022712C00E2C115 /* Main.storyboard */,
 				D34B64692022712C00E2C115 /* Assets.xcassets */,
 				D34B646B2022712C00E2C115 /* LaunchScreen.storyboard */,
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */,
 				D34B64782022783600E2C115 /* SubTaskR.swift in Sources */,
 				D34B64652022712C00E2C115 /* MainViewController.swift in Sources */,
 				D34B64632022712C00E2C115 /* AppDelegate.swift in Sources */,

@@ -22,10 +22,12 @@ class RealmService{
         return Array(resoults)
     }
     
-    func update(taskList: TaskListR, taskListName: String){
+    func update(taskList: TaskListR, taskListName: String?){
         do{
             try realm.write {
-              taskList.nameTaskList = taskListName
+                if(taskListName != nil){
+                    taskList.nameTaskList = taskListName!
+                }
             }
         }catch let error as NSError {
             post(error)
@@ -72,6 +74,23 @@ class RealmService{
             
         } catch let error as NSError{
             post(error)
+        }
+    }
+    
+    func updateSubTask(taskList: TaskListR, index : Int, subTaskTitle: String?, isDone: Bool?){
+        do{
+            try realm.write {
+                if(subTaskTitle != nil){
+                    taskList.subTaskList[index].taskName = subTaskTitle!
+                }
+                if(isDone != nil){
+                    taskList.subTaskList[index].isDone = isDone!
+                }
+                
+            }
+            
+        } catch let e as NSError {
+            post(e)
         }
     }
     

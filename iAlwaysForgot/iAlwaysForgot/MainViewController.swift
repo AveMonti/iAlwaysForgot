@@ -21,7 +21,81 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     @IBAction func addTaskList(_ sender: Any) {
+        self.displayAlert(currentTask: nil)
+    }
+    
+    func updateUI(){
+        self.tableView.reloadData()
+    }
+    
+
+    
+    func tableView(_ tableView: UITableView,
+                   leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let closeAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.realm.delete(taskList: self.realm.getAll()[indexPath.row])
+            self.updateUI()
+            success(true)
+        })
+        closeAction.image = UIImage(named: "tick")
+        closeAction.backgroundColor = .green
+
+        return UISwipeActionsConfiguration(actions: [closeAction])
+
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.displayAlert(currentTask: self.realm.getAll()[indexPath.row])
+            success(true)
+        })
+        modifyAction.image = UIImage(named: "hammer")
+        modifyAction.backgroundColor = .purple
         
+        
+        let deleteAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.realm.delete(taskList: self.realm.getAll()[indexPath.row])
+            self.updateUI()
+            success(true)
+        })
+        deleteAction.image = UIImage(named: "hammer")
+        deleteAction.backgroundColor = UIColor.red
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction,modifyAction])
+    }
+    
+    
+    func displayAlert(currentTask: TaskListR?){
+        
+        
+        let alert = UIAlertController(title: "Great Title", message: "Please input something", preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "Name Input", style: .default) { (alertAction) in
+            let textField = alert.textFields![0] as UITextField
+            if (currentTask != nil){
+                
+                self.realm.update(taskList: currentTask!, taskListName: textField.text!)
+                self.updateUI()
+            }else{
+                
+                let newTask = TaskListR(nameTaskList: textField.text!)//TaskListR(taskName: textField.text!, done: false)
+                self.realm.create(taskList: newTask)
+                self.updateUI()
+            }
+        }
+        alert.addTextField { (textField) in
+            if(currentTask != nil){
+                textField.placeholder = currentTask?.nameTaskList
+            }else{
+                textField.placeholder = "Enter your name"
+            }
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // table view
@@ -36,6 +110,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.textLabel?.text = realm.getAll()[indexPath.row].nameTaskList
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detailsVC") as! SubTasksViewController
+        detailsVC.subTasks = realm.getAll()[indexPath.row]
+        show(detailsVC, sender: self)
     }
 }
 
