@@ -10,20 +10,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="dHA-dg-vaU">
             <objects>
-                <viewController id="owx-0b-H1L" sceneMemberID="viewController">
+                <viewController id="owx-0b-H1L" customClass="AboutViewController" customModule="iAlwaysForgot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ql4-kj-847">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4U-x2-6Xj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R4U-x2-6Xj" firstAttribute="leading" secondItem="Xtd-yI-vQF" secondAttribute="leading" id="4Xg-v8-SyN"/>
+                            <constraint firstItem="R4U-x2-6Xj" firstAttribute="bottom" secondItem="Xtd-yI-vQF" secondAttribute="bottom" id="VpH-Px-YDC"/>
+                            <constraint firstItem="R4U-x2-6Xj" firstAttribute="top" secondItem="Xtd-yI-vQF" secondAttribute="top" id="cLJ-jr-E0y"/>
+                            <constraint firstItem="R4U-x2-6Xj" firstAttribute="trailing" secondItem="Xtd-yI-vQF" secondAttribute="trailing" id="yFN-ih-zsf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Xtd-yI-vQF"/>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="R4U-x2-6Xj" id="Q9Q-gL-dLE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nt-dy-Dva" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1218" y="-702"/>
+            <point key="canvasLocation" x="1218.4000000000001" y="-702.09895052473769"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -70,10 +85,10 @@
                                 <rect key="frame" x="16" y="0.0" width="154" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="logo"/>
+                                <connections>
+                                    <segue destination="owx-0b-H1L" kind="show" id="Z5L-Rk-XiM"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="owx-0b-H1L" kind="show" id="Uvw-wG-FUr"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xfa-dO-MUe">
                             <connections>
