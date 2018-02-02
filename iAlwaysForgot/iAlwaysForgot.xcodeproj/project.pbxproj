@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6EB74BB820246995001B1262 /* SubTaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB74BB720246995001B1262 /* SubTaskListTableViewCell.swift */; };
 		6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE401C32023033A00A2F218 /* SubTasksViewController.swift */; };
 		6EE5EB05202323FD006037F2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5EB04202323FD006037F2 /* AboutViewController.swift */; };
 		72AE482A62E6096A0CB808C0 /* Pods_iAlwaysForgot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6AB7905306BA36B223CE1B /* Pods_iAlwaysForgot.framework */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6EB74BB720246995001B1262 /* SubTaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListTableViewCell.swift; sourceTree = "<group>"; };
 		6EE401C32023033A00A2F218 /* SubTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTasksViewController.swift; sourceTree = "<group>"; };
 		6EE5EB04202323FD006037F2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		AC51A7A6B7C883DE3F1052FD /* Pods-iAlwaysForgot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAlwaysForgot.release.xcconfig"; path = "Pods/Target Support Files/Pods-iAlwaysForgot/Pods-iAlwaysForgot.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				D39F86B220239DFA00D089C2 /* TaskListTableViewCell.swift */,
+				6EB74BB720246995001B1262 /* SubTaskListTableViewCell.swift */,
 			);
 			path = cellModel;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D39F86B320239DFA00D089C2 /* TaskListTableViewCell.swift in Sources */,
+				6EB74BB820246995001B1262 /* SubTaskListTableViewCell.swift in Sources */,
 				6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */,
 				D34B64782022783600E2C115 /* SubTaskR.swift in Sources */,
 				D34B64652022712C00E2C115 /* MainViewController.swift in Sources */,

@@ -8,12 +8,20 @@
 
 import UIKit
 
-class SubTasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SubTasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, 
+SubTaskCellButtonDelegae {
+    
+    let subtaskCellDelegate = SubTaskListTableViewCell()
+    
+    func buttonPressed(selfCell: SubTaskListTableViewCell){
+        print(selfCell)
+
+    }
+    
     
     @IBOutlet weak var tableVIew: UITableView!
     var realm = RealmService.shared
     var subTasks:TaskListR?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,17 +36,18 @@ class SubTasksViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "subTaskCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "subTaskCell") as! SubTaskListTableViewCell
         
-        cell.textLabel?.text = subTasks?.subTaskList[indexPath.row].taskName
+        
+        cell.currentIndex = indexPath.row
+        
+        
         if(subTasks?.subTaskList[indexPath.row].isDone == true){
-            
-            
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.textLabel?.text!)!)
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.subTaskTitleLabel.text)!)
             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-            cell.textLabel?.attributedText = attributeString
+            cell.subTaskTitleLabel?.attributedText = attributeString
         }
-        
+        cell.delegate = self
         
         return cell
     }
@@ -98,8 +107,9 @@ class SubTasksViewController: UIViewController, UITableViewDelegate, UITableView
         
         let closeAction = UIContextualAction(style: .normal, title:  title , handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             
+            let isDone = self.subTasks?.subTaskList[indexPath.row].isDone
             
-            self.realm.updateSubTask(taskList: self.subTasks!, index: indexPath.row, subTaskTitle: nil, isDone: !isAllreadyDone!)
+            self.realm.updateSubTask(taskList: self.subTasks!, index: indexPath.row, subTaskTitle: nil, isDone: !isDone!)
             self.updateUI()
             success(true)
         })
@@ -110,6 +120,9 @@ class SubTasksViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
