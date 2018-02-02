@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE401C32023033A00A2F218 /* SubTasksViewController.swift */; };
 		6EE5EB05202323FD006037F2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5EB04202323FD006037F2 /* AboutViewController.swift */; };
-		9EED55FC1FE1A4BD26F12217 /* Pods_iAlwaysForgot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82357579461CF756E0D10BEA /* Pods_iAlwaysForgot.framework */; };
+		72AE482A62E6096A0CB808C0 /* Pods_iAlwaysForgot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6AB7905306BA36B223CE1B /* Pods_iAlwaysForgot.framework */; };
 		D34B64632022712C00E2C115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64622022712C00E2C115 /* AppDelegate.swift */; };
 		D34B64652022712C00E2C115 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B64642022712C00E2C115 /* MainViewController.swift */; };
 		D34B64682022712C00E2C115 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34B64662022712C00E2C115 /* Main.storyboard */; };
@@ -22,11 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05FC2E905C393A4630D9C13A /* Pods-iAlwaysForgot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAlwaysForgot.release.xcconfig"; path = "Pods/Target Support Files/Pods-iAlwaysForgot/Pods-iAlwaysForgot.release.xcconfig"; sourceTree = "<group>"; };
-		52BC2A254517A6B9FBFBFB70 /* Pods-iAlwaysForgot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAlwaysForgot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iAlwaysForgot/Pods-iAlwaysForgot.debug.xcconfig"; sourceTree = "<group>"; };
 		6EE401C32023033A00A2F218 /* SubTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTasksViewController.swift; sourceTree = "<group>"; };
 		6EE5EB04202323FD006037F2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		82357579461CF756E0D10BEA /* Pods_iAlwaysForgot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAlwaysForgot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC51A7A6B7C883DE3F1052FD /* Pods-iAlwaysForgot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAlwaysForgot.release.xcconfig"; path = "Pods/Target Support Files/Pods-iAlwaysForgot/Pods-iAlwaysForgot.release.xcconfig"; sourceTree = "<group>"; };
 		D34B645F2022712C00E2C115 /* iAlwaysForgot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAlwaysForgot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34B64622022712C00E2C115 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D34B64642022712C00E2C115 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +36,8 @@
 		D34B64772022783600E2C115 /* SubTaskR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskR.swift; sourceTree = "<group>"; };
 		D34B6479202278C700E2C115 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		D39F86B220239DFA00D089C2 /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
+		EC59831A3686C051C9DDC380 /* Pods-iAlwaysForgot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAlwaysForgot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iAlwaysForgot/Pods-iAlwaysForgot.debug.xcconfig"; sourceTree = "<group>"; };
+		EE6AB7905306BA36B223CE1B /* Pods_iAlwaysForgot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAlwaysForgot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,28 +45,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EED55FC1FE1A4BD26F12217 /* Pods_iAlwaysForgot.framework in Frameworks */,
+				72AE482A62E6096A0CB808C0 /* Pods_iAlwaysForgot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		030BF6F8BEE6C62E3695D920 /* Pods */ = {
+		82C0642796443445354F6E33 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				52BC2A254517A6B9FBFBFB70 /* Pods-iAlwaysForgot.debug.xcconfig */,
-				05FC2E905C393A4630D9C13A /* Pods-iAlwaysForgot.release.xcconfig */,
+				EC59831A3686C051C9DDC380 /* Pods-iAlwaysForgot.debug.xcconfig */,
+				AC51A7A6B7C883DE3F1052FD /* Pods-iAlwaysForgot.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		A1FE74F1E750304BB0786B9B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				82357579461CF756E0D10BEA /* Pods_iAlwaysForgot.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D34B64562022712C00E2C115 = {
@@ -74,8 +66,8 @@
 			children = (
 				D34B64612022712C00E2C115 /* iAlwaysForgot */,
 				D34B64602022712C00E2C115 /* Products */,
-				030BF6F8BEE6C62E3695D920 /* Pods */,
-				A1FE74F1E750304BB0786B9B /* Frameworks */,
+				82C0642796443445354F6E33 /* Pods */,
+				DC45BB750896468F3787B85A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +114,14 @@
 			path = cellModel;
 			sourceTree = "<group>";
 		};
+		DC45BB750896468F3787B85A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE6AB7905306BA36B223CE1B /* Pods_iAlwaysForgot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,12 +129,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D34B64712022712C00E2C115 /* Build configuration list for PBXNativeTarget "iAlwaysForgot" */;
 			buildPhases = (
-				19E27A97E47ABF92C04634B7 /* [CP] Check Pods Manifest.lock */,
+				8FB8BBB647A8B191F80A2A87 /* [CP] Check Pods Manifest.lock */,
 				D34B645B2022712C00E2C115 /* Sources */,
 				D34B645C2022712C00E2C115 /* Frameworks */,
 				D34B645D2022712C00E2C115 /* Resources */,
-				0F9391B963EBC96F5E5527BC /* [CP] Embed Pods Frameworks */,
-				C1FD70F46701C9F3B5753277 /* [CP] Copy Pods Resources */,
+				72B1FC42EF4B3FDF2688C4B1 /* [CP] Embed Pods Frameworks */,
+				FF07518718A3E538DCCD026D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,7 +193,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F9391B963EBC96F5E5527BC /* [CP] Embed Pods Frameworks */ = {
+		72B1FC42EF4B3FDF2688C4B1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -213,7 +213,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iAlwaysForgot/Pods-iAlwaysForgot-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		19E27A97E47ABF92C04634B7 /* [CP] Check Pods Manifest.lock */ = {
+		8FB8BBB647A8B191F80A2A87 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -231,7 +231,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C1FD70F46701C9F3B5753277 /* [CP] Copy Pods Resources */ = {
+		FF07518718A3E538DCCD026D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -395,7 +395,7 @@
 		};
 		D34B64722022712C00E2C115 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52BC2A254517A6B9FBFBFB70 /* Pods-iAlwaysForgot.debug.xcconfig */;
+			baseConfigurationReference = EC59831A3686C051C9DDC380 /* Pods-iAlwaysForgot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -411,7 +411,7 @@
 		};
 		D34B64732022712C00E2C115 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 05FC2E905C393A4630D9C13A /* Pods-iAlwaysForgot.release.xcconfig */;
+			baseConfigurationReference = AC51A7A6B7C883DE3F1052FD /* Pods-iAlwaysForgot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
