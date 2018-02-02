@@ -15,7 +15,14 @@ SubTaskCellButtonDelegae {
     
     func buttonPressed(selfCell: SubTaskListTableViewCell){
         print(selfCell)
+        //TODO: Add data picker on UIAlertController
+        let picker = UIPickerView()
+        let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n", message: "", preferredStyle: .actionSheet);
+        alertVC.isModalInPopover = true;
+        alertVC.view.addSubview(picker)
 
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
     
     
@@ -42,11 +49,15 @@ SubTaskCellButtonDelegae {
         cell.currentIndex = indexPath.row
         
         
-        if(subTasks?.subTaskList[indexPath.row].isDone == true){
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.subTaskTitleLabel.text)!)
-            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.subTaskTitleLabel.text)!)
+            if(subTasks?.subTaskList[indexPath.row].isDone == true){
+                attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            }else{
+                attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
+            }
             cell.subTaskTitleLabel?.attributedText = attributeString
-        }
+        
         cell.delegate = self
         
         return cell
