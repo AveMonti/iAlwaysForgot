@@ -7,23 +7,13 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SubTasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 SubTaskCellButtonDelegae {
     
     let subtaskCellDelegate = SubTaskListTableViewCell()
     
-    func buttonPressed(selfCell: SubTaskListTableViewCell){
-        print(selfCell)
-        //TODO: Add data picker on UIAlertController
-        let picker = UIPickerView()
-        let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n", message: "", preferredStyle: .actionSheet);
-        alertVC.isModalInPopover = true;
-        alertVC.view.addSubview(picker)
-
-        alertVC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
     
     
     @IBOutlet weak var tableVIew: UITableView!
@@ -33,35 +23,94 @@ SubTaskCellButtonDelegae {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        return (subTasks?.subTaskList.count)!
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "subTaskCell") as! SubTaskListTableViewCell
-        
-        
-        cell.currentIndex = indexPath.row
-        
-        
-        
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.subTaskTitleLabel.text)!)
-            if(subTasks?.subTaskList[indexPath.row].isDone == true){
-                attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-            }else{
-                attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
+            
+            if error != nil {
+                print("Authorization Unsuccessfull")
+            }else {
+                print("Authorization Successfull")
             }
-            cell.subTaskTitleLabel?.attributedText = attributeString
+        }
         
-        cell.delegate = self
         
-        return cell
     }
+    
+    func buttonPressed(selfCell: SubTaskListTableViewCell){
+        print(selfCell)
+        //TODO: Add data picker on UIAlertController
+        let picker = UIDatePicker()
+        
+        let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n", message: "", preferredStyle: .actionSheet);
+        let action = UIAlertAction(title: "Set", style: .default) { (alertAction) in
+            
+            
+            self.timedNotifications(inSeconds: 10) { (success) in
+                if success {
+                    print("Successfully Notified")
+                }
+            }
+            
+            
+        }
+        let addDate = UIAlertAction(title: "Date", style: .default) { (alertAction) in
+            
+//
+//            var dateFormatter = DateFormatterDateFormatter()
+//            dateFormatter.dateFormat = "dd MMM yyyy"
+//            var selectedDate = dateFormatter.stringFromDate(myDatePicker.date)
+//            println(selectedDate)
+            print(picker.date)
+            
+        
+            
+        }
+        
+        
+        alertVC.addAction(addDate)
+        alertVC.addAction(action)
+        alertVC.isModalInPopover = true;
+        alertVC.view.addSubview(picker)
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    func timedNotifications(inSeconds: TimeInterval, completion: @escaping (_ Success: Bool) -> ()) {
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
+        let content = UNMutableNotificationContent()
+        
+//        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: when)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
+//                                                    repeats: false)
+        
+        
+        
+        
+        content.title = "Breaking News"
+        content.subtitle = "Yo whats up i am subtitle"
+        content.body = "idbnqwkdnqwoidoqw;edn;owqdno;wqndo;qwndowqndoqwdn qwdkj"
+        let request = UNNotificationRequest(identifier: "customNotification", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            
+            if error != nil {
+                completion(false)
+            }else {
+                completion(true)
+            }
+        }
+    }
+    
+    func escaping(){
+        print("xD")
+    }
+    
+    
+    
+  
     
     @IBAction func addBTN(_ sender: Any) {
         self.subTaskAction(index: nil)
@@ -102,6 +151,8 @@ SubTaskCellButtonDelegae {
         self.tableVIew.reloadData()
     }
     
+   
+    // table view
     func tableView(_ tableView: UITableView,
                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -158,4 +209,32 @@ SubTaskCellButtonDelegae {
         
         return UISwipeActionsConfiguration(actions: [deleteAction,modifyAction])
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        return (subTasks?.subTaskList.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "subTaskCell") as! SubTaskListTableViewCell
+        
+        
+        cell.currentIndex = indexPath.row
+        cell.subTaskTitleLabel.text = self.subTasks?.subTaskList[indexPath.row].taskName
+        
+        
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.subTaskTitleLabel.text)!)
+        if(subTasks?.subTaskList[indexPath.row].isDone == true){
+            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        }else{
+            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
+        }
+        cell.subTaskTitleLabel?.attributedText = attributeString
+        
+        cell.delegate = self
+        
+        return cell
+    }
+    
 }
