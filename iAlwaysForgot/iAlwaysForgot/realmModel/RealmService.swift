@@ -94,8 +94,19 @@ class RealmService{
         }
     }
     
-    /// Notyfication Center
     
+    func updateReminderDate(taskList: TaskListR, index : Int, remainderDate: Date){
+        do{
+            try realm.write {
+                taskList.subTaskList[index].reminderDate = remainderDate
+            }
+            
+        } catch let e as NSError{
+            post(e)
+        }
+    }
+    
+    /// Notyfication Center
     func post(_ error: Error){
         NotificationCenter.default.post(name: NSNotification.Name("RealmError"), object: error)
     }

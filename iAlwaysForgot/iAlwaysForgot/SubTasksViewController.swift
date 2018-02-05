@@ -44,29 +44,18 @@ SubTaskCellButtonDelegae {
         let action = UIAlertAction(title: "Set", style: .default) { (alertAction) in
             
             
-            self.timedNotifications(inSeconds: 10) { (success) in
+            self.timedNotifications(date: picker.date,index: selfCell.currentIndex!) { (success) in
                 if success {
-                    print("Successfully Notified")
+                    print("Notyfication was added")
                 }
             }
+            print("date \(picker.date)")
+            self.realm.updateReminderDate(taskList: self.subTasks!, index: selfCell.currentIndex!, remainderDate: picker.date)
+            print("loooooool \(self.subTasks?.subTaskList[selfCell.currentIndex!].reminderDate)")
             
             
         }
-        let addDate = UIAlertAction(title: "Date", style: .default) { (alertAction) in
-            
-//
-//            var dateFormatter = DateFormatterDateFormatter()
-//            dateFormatter.dateFormat = "dd MMM yyyy"
-//            var selectedDate = dateFormatter.stringFromDate(myDatePicker.date)
-//            println(selectedDate)
-            print(picker.date)
-            
         
-            
-        }
-        
-        
-        alertVC.addAction(addDate)
         alertVC.addAction(action)
         alertVC.isModalInPopover = true;
         alertVC.view.addSubview(picker)
@@ -78,21 +67,21 @@ SubTaskCellButtonDelegae {
     
     
     
-    func timedNotifications(inSeconds: TimeInterval, completion: @escaping (_ Success: Bool) -> ()) {
+    func timedNotifications(date: Date,index: Int, completion: @escaping (_ Success: Bool) -> ()) {
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
+       // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
         let content = UNMutableNotificationContent()
         
-//        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: when)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
-//                                                    repeats: false)
+        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
+                                                    repeats: false)
         
         
         
         
-        content.title = "Breaking News"
-        content.subtitle = "Yo whats up i am subtitle"
-        content.body = "idbnqwkdnqwoidoqw;edn;owqdno;wqndo;qwndowqndoqwdn qwdkj"
+        content.title = "Hey u have task to do"
+        content.subtitle = "do more"
+        content.body = (subTasks?.subTaskList[index].taskName)!
         let request = UNNotificationRequest(identifier: "customNotification", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error) in
             
@@ -102,6 +91,7 @@ SubTaskCellButtonDelegae {
                 completion(true)
             }
         }
+        
     }
     
     func escaping(){
@@ -224,6 +214,17 @@ SubTaskCellButtonDelegae {
         cell.subTaskTitleLabel.text = self.subTasks?.subTaskList[indexPath.row].taskName
         
         
+        //Remainding date Year
+//
+//        let dateFormatter = DateFormatter()
+//        let nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].reminderDate)!)
+//        cell.yearDateLabel.text = nssDate
+        print(self.subTasks?.subTaskList[indexPath.row].reminderDate)
+
+        
+        
+        
+        //SubTaskTitle
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.subTaskTitleLabel.text)!)
         if(subTasks?.subTaskList[indexPath.row].isDone == true){
             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
