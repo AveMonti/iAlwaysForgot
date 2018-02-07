@@ -39,9 +39,13 @@ SubTaskCellButtonDelegae {
         print(selfCell)
         //TODO: Add data picker on UIAlertController
         let picker = UIDatePicker()
-        
         let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n", message: "", preferredStyle: .actionSheet);
         let action = UIAlertAction(title: "Set", style: .default) { (alertAction) in
+            
+            if(self.subTasks?.subTaskList[selfCell.currentIndex!].remaindUID != ""){
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(self.subTasks?.subTaskList[selfCell.currentIndex!].remaindUID)!])
+                
+            }
             
             
             self.timedNotifications(date: picker.date,index: selfCell.currentIndex!) { (success) in
@@ -70,7 +74,6 @@ SubTaskCellButtonDelegae {
     
     func timedNotifications(date: Date,index: Int, completion: @escaping (_ Success: Bool) -> ()) {
         
-        // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
         let content = UNMutableNotificationContent()
         
         let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
@@ -115,7 +118,7 @@ SubTaskCellButtonDelegae {
                 self.realm.updateSubTask(taskList: self.subTasks!, index: index!, subTaskTitle: textField.text!, isDone: nil)
             }else{
                 let newSubtask = SubTaskR(taskName: textField.text!, isDone: false)
-                self.realm.addSubTask(taskList: self.subTasks!, subTask: newSubtask) //(taskList: self.tasker!, subTask: newSubtask)
+                self.realm.addSubTask(taskList: self.subTasks!, subTask: newSubtask)
             }
             self.updateUI()
             
@@ -213,12 +216,6 @@ SubTaskCellButtonDelegae {
         
         cell.currentIndex = indexPath.row
         cell.subTaskTitleLabel.text = self.subTasks?.subTaskList[indexPath.row].taskName
-        
-        
-        //Remainding date Year
-        //
-        
-        
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
