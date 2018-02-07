@@ -16,6 +16,7 @@ class SubTaskListTableViewCell: UITableViewCell {
     @IBOutlet weak var subTaskTitleLabel: UILabel!
     @IBOutlet weak var yearDateLabel: UILabel!
     @IBOutlet weak var hoursDateLabel: UILabel!
+    @IBOutlet weak var remaindBtn: UIButton!
     
     
     var currentIndex:Int?

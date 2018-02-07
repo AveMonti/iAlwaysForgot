@@ -90,7 +90,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskListCell") as! TaskListTableViewCell
-        cell.TaskListCountLabel.text = "\([indexPath.row])."
+        cell.TaskListCountLabel.text = "\(indexPath.row)."
         cell.TaskListTitleLabel.text = realm.getAll()[indexPath.row].nameTaskList
         cell.CounterTaskInsideLabel.text = "\(realm.getAll()[indexPath.row].subTaskList.count) tasks"
         

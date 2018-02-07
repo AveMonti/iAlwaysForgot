@@ -39,34 +39,26 @@ SubTaskCellButtonDelegae {
         print(selfCell)
         //TODO: Add data picker on UIAlertController
         let picker = UIDatePicker()
-        
         let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n", message: "", preferredStyle: .actionSheet);
         let action = UIAlertAction(title: "Set", style: .default) { (alertAction) in
             
-            
-            self.timedNotifications(inSeconds: 10) { (success) in
-                if success {
-                    print("Successfully Notified")
-                }
+            if(self.subTasks?.subTaskList[selfCell.currentIndex!].remaindUID != ""){
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(self.subTasks?.subTaskList[selfCell.currentIndex!].remaindUID)!])
+                
             }
             
             
-        }
-        let addDate = UIAlertAction(title: "Date", style: .default) { (alertAction) in
-            
-//
-//            var dateFormatter = DateFormatterDateFormatter()
-//            dateFormatter.dateFormat = "dd MMM yyyy"
-//            var selectedDate = dateFormatter.stringFromDate(myDatePicker.date)
-//            println(selectedDate)
-            print(picker.date)
-            
-        
-            
+            self.timedNotifications(date: picker.date,index: selfCell.currentIndex!) { (success) in
+                if success {
+                    print("Notyfication was added")
+                }
+            }
+            self.realm.updateReminderDate(taskList: self.subTasks!, index: selfCell.currentIndex!, remainderDate: picker.date)
+            self.tableVIew.reloadData()
+
+    
         }
         
-        
-        alertVC.addAction(addDate)
         alertVC.addAction(action)
         alertVC.isModalInPopover = true;
         alertVC.view.addSubview(picker)
@@ -78,22 +70,23 @@ SubTaskCellButtonDelegae {
     
     
     
-    func timedNotifications(inSeconds: TimeInterval, completion: @escaping (_ Success: Bool) -> ()) {
+    func timedNotifications(date: Date,index: Int, completion: @escaping (_ Success: Bool) -> ()) {
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
         let content = UNMutableNotificationContent()
         
-//        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: when)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
-//                                                    repeats: false)
+        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
+                                                    repeats: false)
         
         
         
         
-        content.title = "Breaking News"
-        content.subtitle = "Yo whats up i am subtitle"
-        content.body = "idbnqwkdnqwoidoqw;edn;owqdno;wqndo;qwndowqndoqwdn qwdkj"
-        let request = UNNotificationRequest(identifier: "customNotification", content: content, trigger: trigger)
+        content.title = "Hey u have task to do"
+        content.subtitle = "do more"
+        content.body = (subTasks?.subTaskList[index].taskName)!
+        let identifier = UUID().uuidString
+        self.realm.updateReminderUID(taskList: self.subTasks!, index: index, remaindUID: identifier)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error) in
             
             if error != nil {
@@ -102,15 +95,16 @@ SubTaskCellButtonDelegae {
                 completion(true)
             }
         }
+        
     }
     
     func escaping(){
-        print("xD")
+        print("Error")
     }
     
     
     
-  
+    
     
     @IBAction func addBTN(_ sender: Any) {
         self.subTaskAction(index: nil)
@@ -124,7 +118,7 @@ SubTaskCellButtonDelegae {
                 self.realm.updateSubTask(taskList: self.subTasks!, index: index!, subTaskTitle: textField.text!, isDone: nil)
             }else{
                 let newSubtask = SubTaskR(taskName: textField.text!, isDone: false)
-                self.realm.addSubTask(taskList: self.subTasks!, subTask: newSubtask) //(taskList: self.tasker!, subTask: newSubtask)
+                self.realm.addSubTask(taskList: self.subTasks!, subTask: newSubtask)
             }
             self.updateUI()
             
@@ -151,7 +145,7 @@ SubTaskCellButtonDelegae {
         self.tableVIew.reloadData()
     }
     
-   
+    
     // table view
     func tableView(_ tableView: UITableView,
                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -223,7 +217,18 @@ SubTaskCellButtonDelegae {
         cell.currentIndex = indexPath.row
         cell.subTaskTitleLabel.text = self.subTasks?.subTaskList[indexPath.row].taskName
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        var nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
+        cell.yearDateLabel.text = nssDate
+        dateFormatter.dateFormat = "hh:mm"
+        nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
+        cell.hoursDateLabel.text = nssDate
         
+        
+        
+        
+        //SubTaskTitle
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.subTaskTitleLabel.text)!)
         if(subTasks?.subTaskList[indexPath.row].isDone == true){
             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))

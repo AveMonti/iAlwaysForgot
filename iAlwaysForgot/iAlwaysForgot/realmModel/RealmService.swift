@@ -15,7 +15,7 @@ class RealmService{
     
     var realm = try! Realm()
     
-        // TaskList
+    // TaskList
     
     func getAll() -> [TaskListR] {
         let resoults: Results<TaskListR> = realm.objects(TaskListR.self)
@@ -94,8 +94,29 @@ class RealmService{
         }
     }
     
-    /// Notyfication Center
+    func updateReminderUID(taskList: TaskListR, index : Int, remaindUID: String){
+        do{
+            try realm.write {
+                taskList.subTaskList[index].remaindUID = remaindUID
+            }
+            
+        } catch let e as NSError{
+            post(e)
+        }
+    }
     
+        func updateReminderDate(taskList: TaskListR, index : Int, remainderDate: Date){
+            do{
+                try realm.write {
+                    taskList.subTaskList[index].remaindData = remainderDate
+                }
+    
+            } catch let e as NSError{
+                post(e)
+            }
+        }
+    
+    /// Notyfication Center
     func post(_ error: Error){
         NotificationCenter.default.post(name: NSNotification.Name("RealmError"), object: error)
     }
