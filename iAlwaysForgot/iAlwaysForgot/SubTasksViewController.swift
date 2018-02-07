@@ -54,7 +54,7 @@ SubTaskCellButtonDelegae {
                 }
             }
             self.realm.updateReminderDate(taskList: self.subTasks!, index: selfCell.currentIndex!, remainderDate: picker.date)
-            
+            self.tableVIew.reloadData()
 
     
         }
