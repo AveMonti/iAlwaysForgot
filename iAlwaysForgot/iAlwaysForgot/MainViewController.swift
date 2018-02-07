@@ -104,7 +104,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let detailsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detailsVC") as! SubTasksViewController
         detailsVC.subTasks = realm.getAll()[indexPath.row]
         show(detailsVC, sender: self)

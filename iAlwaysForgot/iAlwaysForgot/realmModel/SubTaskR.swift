@@ -13,7 +13,7 @@ class SubTaskR: Object {
     @objc dynamic var taskName = ""
     @objc dynamic var isDone: Bool = false
     @objc dynamic var remaindUID = ""
-    @objc dynamic var remaindData = Date()
+    @objc dynamic var remaindData:Date?
     
     convenience init(taskName: String, isDone: Bool) {
         self.init()

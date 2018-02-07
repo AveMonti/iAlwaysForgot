@@ -16,6 +16,7 @@ SubTaskCellButtonDelegae {
     
     
     
+    @IBOutlet weak var addBtnOutlet: UIButton!
     @IBOutlet weak var tableVIew: UITableView!
     var realm = RealmService.shared
     var subTasks:TaskListR?
@@ -33,11 +34,13 @@ SubTaskCellButtonDelegae {
         }
         
         
+        addBtnOutlet.layer.cornerRadius = 0.5 * addBtnOutlet.bounds.size.width
+        addBtnOutlet.layer.borderWidth = 3
+        addBtnOutlet.layer.borderColor = UIColor.white.cgColor
+        
     }
     
     func buttonPressed(selfCell: SubTaskListTableViewCell){
-        print(selfCell)
-        //TODO: Add data picker on UIAlertController
         let picker = UIDatePicker()
         let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n", message: "", preferredStyle: .actionSheet);
         let action = UIAlertAction(title: "Set", style: .default) { (alertAction) in
@@ -54,9 +57,18 @@ SubTaskCellButtonDelegae {
                 }
             }
             self.realm.updateReminderDate(taskList: self.subTasks!, index: selfCell.currentIndex!, remainderDate: picker.date)
-            self.tableVIew.reloadData()
-
-    
+            self.updateUI()
+        }
+        
+        let deleteNotyfication = UIAlertAction(title: "Delete notyfication", style: .destructive) { (alertAction) in
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(self.subTasks?.subTaskList[selfCell.currentIndex!].remaindUID)!])
+            
+            self.realm.updateReminderUID(taskList: self.subTasks!, index: selfCell.currentIndex!, remaindUID: "")
+            self.updateUI()
+        }
+        
+        if(self.subTasks?.subTaskList[selfCell.currentIndex!].remaindUID != ""){
+            alertVC.addAction(deleteNotyfication)
         }
         
         alertVC.addAction(action)
@@ -135,6 +147,7 @@ SubTaskCellButtonDelegae {
             
         }
         
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         
         alert.addAction(action)
@@ -194,6 +207,8 @@ SubTaskCellButtonDelegae {
         
         
         let deleteAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(self.subTasks?.subTaskList[indexPath.row].remaindUID)!])
+            self.realm.updateReminderUID(taskList: self.subTasks!, index: indexPath.row, remaindUID: "")
             self.realm.deleteSubTask(taskList: self.subTasks!, index: indexPath.row)
             self.updateUI()
             success(true)
@@ -217,13 +232,20 @@ SubTaskCellButtonDelegae {
         cell.currentIndex = indexPath.row
         cell.subTaskTitleLabel.text = self.subTasks?.subTaskList[indexPath.row].taskName
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        var nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
-        cell.yearDateLabel.text = nssDate
-        dateFormatter.dateFormat = "hh:mm"
-        nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
-        cell.hoursDateLabel.text = nssDate
+        
+        
+        if(self.subTasks?.subTaskList[indexPath.row].remaindUID != ""){
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            var nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
+            cell.yearDateLabel.text = nssDate
+            dateFormatter.dateFormat = "hh:mm"
+            nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
+            cell.hoursDateLabel.text = nssDate
+        }else{
+            cell.hoursDateLabel.text = ""
+            cell.yearDateLabel.text = ""
+        }
         
         
         
