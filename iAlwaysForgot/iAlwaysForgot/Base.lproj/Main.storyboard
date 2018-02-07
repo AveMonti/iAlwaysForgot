@@ -77,7 +77,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="239.5" id="QQk-X3-1UG"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -103,7 +103,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.89999595207253891" green="0.89999595207253891" blue="0.89999595207253891" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.52344977855682373" green="0.97986477613449097" blue="0.85373383760452271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="7Ia-o3-xPj" secondAttribute="bottom" constant="5" id="8Rq-du-lo4"/>
                                                 <constraint firstItem="7Ia-o3-xPj" firstAttribute="top" secondItem="hTw-uR-yTQ" secondAttribute="top" constant="5" id="Su8-iR-DFf"/>
@@ -218,6 +218,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.5313561410699168" green="1" blue="0.87674078120341703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="17o-4e-mxr" firstAttribute="leading" secondItem="jtP-u0-sfU" secondAttribute="leading" constant="5" id="gQ8-Rq-uQn"/>
                                                 <constraint firstAttribute="trailing" secondItem="17o-4e-mxr" secondAttribute="trailing" constant="5" id="ll9-H0-DDc"/>
@@ -227,6 +228,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="hoursDateLabel" destination="VS2-np-Xz5" id="Brs-n0-GPq"/>
+                                            <outlet property="remaindBtn" destination="r4x-Uj-foM" id="DnM-7A-EZ3"/>
                                             <outlet property="subTaskTitleLabel" destination="HJo-Of-5qp" id="Ewf-A1-tAg"/>
                                             <outlet property="yearDateLabel" destination="grb-DI-UcJ" id="1j3-e5-IxN"/>
                                         </connections>

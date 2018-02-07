@@ -47,13 +47,14 @@ SubTaskCellButtonDelegae {
             self.timedNotifications(date: picker.date,index: selfCell.currentIndex!) { (success) in
                 if success {
                     print("Notyfication was added")
+                    let identifier = UUID().uuidString
+                    self.realm.updateReminderUID(taskList: self.subTasks!, index: selfCell.currentIndex!, remaindUID: identifier)
+                    self.realm.updateReminderDate(taskList: self.subTasks!, index: selfCell.currentIndex!, remainderDate: picker.date)
                 }
             }
-            print("date \(picker.date)")
-            self.realm.updateReminderDate(taskList: self.subTasks!, index: selfCell.currentIndex!, remainderDate: picker.date)
-            print("loooooool \(self.subTasks?.subTaskList[selfCell.currentIndex!].reminderDate)")
             
-            
+
+    
         }
         
         alertVC.addAction(action)
@@ -69,7 +70,7 @@ SubTaskCellButtonDelegae {
     
     func timedNotifications(date: Date,index: Int, completion: @escaping (_ Success: Bool) -> ()) {
         
-       // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
+        // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
         let content = UNMutableNotificationContent()
         
         let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
@@ -100,7 +101,7 @@ SubTaskCellButtonDelegae {
     
     
     
-  
+    
     
     @IBAction func addBTN(_ sender: Any) {
         self.subTaskAction(index: nil)
@@ -141,7 +142,7 @@ SubTaskCellButtonDelegae {
         self.tableVIew.reloadData()
     }
     
-   
+    
     // table view
     func tableView(_ tableView: UITableView,
                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -215,12 +216,18 @@ SubTaskCellButtonDelegae {
         
         
         //Remainding date Year
-//
-//        let dateFormatter = DateFormatter()
-//        let nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].reminderDate)!)
-//        cell.yearDateLabel.text = nssDate
-        print(self.subTasks?.subTaskList[indexPath.row].reminderDate)
-
+        //
+        
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        var nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
+        cell.yearDateLabel.text = nssDate
+        dateFormatter.dateFormat = "hh:mm"
+        nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
+        cell.hoursDateLabel.text = nssDate
+        
         
         
         
