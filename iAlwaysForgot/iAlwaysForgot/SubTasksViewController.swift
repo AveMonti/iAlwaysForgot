@@ -51,11 +51,9 @@ SubTaskCellButtonDelegae {
             self.timedNotifications(date: picker.date,index: selfCell.currentIndex!) { (success) in
                 if success {
                     print("Notyfication was added")
-                    let identifier = UUID().uuidString
-                    self.realm.updateReminderUID(taskList: self.subTasks!, index: selfCell.currentIndex!, remaindUID: identifier)
-                    self.realm.updateReminderDate(taskList: self.subTasks!, index: selfCell.currentIndex!, remainderDate: picker.date)
                 }
             }
+            self.realm.updateReminderDate(taskList: self.subTasks!, index: selfCell.currentIndex!, remainderDate: picker.date)
             
 
     
@@ -86,7 +84,9 @@ SubTaskCellButtonDelegae {
         content.title = "Hey u have task to do"
         content.subtitle = "do more"
         content.body = (subTasks?.subTaskList[index].taskName)!
-        let request = UNNotificationRequest(identifier: "customNotification", content: content, trigger: trigger)
+        let identifier = UUID().uuidString
+        self.realm.updateReminderUID(taskList: self.subTasks!, index: index, remaindUID: identifier)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error) in
             
             if error != nil {
@@ -99,7 +99,7 @@ SubTaskCellButtonDelegae {
     }
     
     func escaping(){
-        print("xD")
+        print("Error")
     }
     
     
