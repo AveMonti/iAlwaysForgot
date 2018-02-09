@@ -29,7 +29,7 @@ SubTaskCellButtonDelegae {
         super.viewDidLoad()
         progresCircle = ProgressCircle(view: self.circleView)
         progresCircle.setup()
-
+        
         self.bgImage.loadGif(name: "tenor")
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
@@ -85,9 +85,6 @@ SubTaskCellButtonDelegae {
         self.present(alertVC, animated: true, completion: nil)
     }
     
-    
-    
-    
     func timedNotifications(date: Date,index: Int, completion: @escaping (_ Success: Bool) -> ()) {
         
         let content = UNMutableNotificationContent()
@@ -95,10 +92,6 @@ SubTaskCellButtonDelegae {
         let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
                                                     repeats: false)
-        
-        
-        
-        
         content.title = "Hey u have task to do"
         content.subtitle = "do more"
         content.body = (subTasks?.subTaskList[index].taskName)!
@@ -120,10 +113,6 @@ SubTaskCellButtonDelegae {
         print("Error")
     }
     
-    
-    
-    
-    
     @IBAction func addBTN(_ sender: Any) {
         self.subTaskAction(index: nil)
     }
@@ -142,9 +131,6 @@ SubTaskCellButtonDelegae {
             
         }
         alert.addTextField { (textField) in
-            
-            
-            
             if(index != nil){
                 textField.placeholder = self.subTasks?.subTaskList[index!].taskName
             }else{
@@ -153,9 +139,7 @@ SubTaskCellButtonDelegae {
             
         }
         
-        
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
@@ -172,13 +156,9 @@ SubTaskCellButtonDelegae {
         let allTasks = Float((self.subTasks?.subTaskList.count)!)
         self.toDoCountLabel.text = "ToDo: \(Int(allTasks) - countDone)"
         self.doneCountLabel.text = "Done: \(countDone)"
-  
-//        self.progresCircle.update(currentValue: Float((allTasks / Float(countDone)) * 0.2) )
         self.progresCircle.update(currentValue: Float((Float(countDone) / allTasks)) * 0.8)
     }
     
-    
-    // table view
     func tableView(_ tableView: UITableView,
                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -205,7 +185,6 @@ SubTaskCellButtonDelegae {
         closeAction.backgroundColor = color
         
         return UISwipeActionsConfiguration(actions: [closeAction])
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -213,10 +192,7 @@ SubTaskCellButtonDelegae {
     }
     
     func tableView(_ tableView: UITableView,
-                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-    {
-        
-        
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
         let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             self.subTaskAction(index: indexPath.row)
             success(true)
@@ -240,19 +216,13 @@ SubTaskCellButtonDelegae {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
         return (subTasks?.subTaskList.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subTaskCell") as! SubTaskListTableViewCell
-        
-        
         cell.currentIndex = indexPath.row
         cell.subTaskTitleLabel.text = " - \((self.subTasks?.subTaskList[indexPath.row].taskName)!)"
-        
-        
-        
         if(self.subTasks?.subTaskList[indexPath.row].remaindUID != ""){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -265,10 +235,6 @@ SubTaskCellButtonDelegae {
             cell.hoursDateLabel.text = ""
             cell.yearDateLabel.text = ""
         }
-        
-        
-        
-        
         //SubTaskTitle
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.subTaskTitleLabel.text)!)
         if(subTasks?.subTaskList[indexPath.row].isDone == true){
@@ -277,7 +243,6 @@ SubTaskCellButtonDelegae {
             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
         }
         cell.subTaskTitleLabel?.attributedText = attributeString
-        
         cell.delegate = self
         
         return cell

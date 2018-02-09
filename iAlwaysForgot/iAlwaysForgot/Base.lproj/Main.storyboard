@@ -26,6 +26,7 @@
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="R4U-x2-6Xj" firstAttribute="leading" secondItem="Xtd-yI-vQF" secondAttribute="leading" id="4Xg-v8-SyN"/>
                             <constraint firstItem="R4U-x2-6Xj" firstAttribute="bottom" secondItem="Xtd-yI-vQF" secondAttribute="bottom" id="VpH-Px-YDC"/>
@@ -228,7 +229,7 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="r4x-Uj-foM" secondAttribute="bottom" constant="5" id="7ws-RJ-r0V"/>
                                                         <constraint firstItem="HJo-Of-5qp" firstAttribute="leading" secondItem="17o-4e-mxr" secondAttribute="leading" constant="8" id="A2f-aw-6lX"/>
@@ -245,7 +246,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.5313561410699168" green="1" blue="0.87674078120341703" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="17o-4e-mxr" firstAttribute="leading" secondItem="jtP-u0-sfU" secondAttribute="leading" id="gQ8-Rq-uQn"/>
                                                 <constraint firstAttribute="trailing" secondItem="17o-4e-mxr" secondAttribute="trailing" id="ll9-H0-DDc"/>
