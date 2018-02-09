@@ -39,10 +39,8 @@ SubTaskCellButtonDelegae {
             }
         }
         
-        
+        tableVIew.backgroundColor = .clear
         addBtnOutlet.layer.cornerRadius = 0.5 * addBtnOutlet.bounds.size.height
-        addBtnOutlet.layer.borderWidth = 3
-        addBtnOutlet.layer.borderColor = UIColor.white.cgColor
         self.updateUI()
         
     }
@@ -56,7 +54,6 @@ SubTaskCellButtonDelegae {
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(self.subTasks?.subTaskList[selfCell.currentIndex!].remaindUID)!])
                 
             }
-            
             
             self.timedNotifications(date: picker.date,index: selfCell.currentIndex!) { (success) in
                 if success {
@@ -169,10 +166,10 @@ SubTaskCellButtonDelegae {
                 countDone = countDone + 1
             }
         }
-        self.doneCountLabel.text = "Done: \(countDone)"
-        let allTasks = Float((self.subTasks?.subTaskList.count)!)
-        self.toDoCountLabel.text = "ToDo: \(Int(allTasks))"
         
+        let allTasks = Float((self.subTasks?.subTaskList.count)!)
+        self.toDoCountLabel.text = "ToDo: \(Int(allTasks) - countDone)"
+        self.doneCountLabel.text = "Done: \(countDone)"
   
 //        self.progresCircle.update(currentValue: Float((allTasks / Float(countDone)) * 0.2) )
         self.progresCircle.update(currentValue: Float((Float(countDone) / allTasks)) * 0.8)
@@ -250,7 +247,7 @@ SubTaskCellButtonDelegae {
         
         
         cell.currentIndex = indexPath.row
-        cell.subTaskTitleLabel.text = self.subTasks?.subTaskList[indexPath.row].taskName
+        cell.subTaskTitleLabel.text = " - \((self.subTasks?.subTaskList[indexPath.row].taskName)!)"
         
         
         

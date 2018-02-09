@@ -17,7 +17,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // UI
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.backgroundColor = .clear
     }
 
     @IBAction func addTaskList(_ sender: Any) {
