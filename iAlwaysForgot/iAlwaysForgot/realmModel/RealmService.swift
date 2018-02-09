@@ -105,16 +105,17 @@ class RealmService{
         }
     }
     
-        func updateReminderDate(taskList: TaskListR, index : Int, remainderDate: Date){
-            do{
-                try realm.write {
-                    taskList.subTaskList[index].remaindData = remainderDate
-                }
-    
-            } catch let e as NSError{
-                post(e)
+    func updateReminderDate(taskList: TaskListR, index : Int, remainderDate: Date){
+        do{
+            try realm.write {
+                taskList.subTaskList[index].remaindData = remainderDate
             }
+            
+        } catch let e as NSError{
+            post(e)
         }
+    }
+    
     
     /// Notyfication Center
     func post(_ error: Error){

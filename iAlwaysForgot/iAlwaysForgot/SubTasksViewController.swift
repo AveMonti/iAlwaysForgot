@@ -12,10 +12,13 @@ import UserNotifications
 class SubTasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 SubTaskCellButtonDelegae {
     
-    let subtaskCellDelegate = SubTaskListTableViewCell()
+    var subtaskCellDelegate = SubTaskListTableViewCell()
+    var progresCircle = ProgressCircle()
     
+    @IBOutlet weak var toDoCountLabel: UILabel!
+    @IBOutlet weak var doneCountLabel: UILabel!
     
-    
+    @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var addBtnOutlet: UIButton!
     @IBOutlet weak var tableVIew: UITableView!
     var realm = RealmService.shared
@@ -23,6 +26,9 @@ SubTaskCellButtonDelegae {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        progresCircle = ProgressCircle(view: self.circleView)
+        progresCircle.setup()
+        
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
             
@@ -34,9 +40,10 @@ SubTaskCellButtonDelegae {
         }
         
         
-        addBtnOutlet.layer.cornerRadius = 0.5 * addBtnOutlet.bounds.size.width
+        addBtnOutlet.layer.cornerRadius = 0.5 * addBtnOutlet.bounds.size.height
         addBtnOutlet.layer.borderWidth = 3
         addBtnOutlet.layer.borderColor = UIColor.white.cgColor
+        self.updateUI()
         
     }
     
@@ -156,6 +163,19 @@ SubTaskCellButtonDelegae {
     
     func updateUI(){
         self.tableVIew.reloadData()
+        var countDone = 0
+        for value in (self.subTasks?.subTaskList)!{
+            if value.isDone == true{
+                countDone = countDone + 1
+            }
+        }
+        self.doneCountLabel.text = "Done: \(countDone)"
+        let allTasks = Float((self.subTasks?.subTaskList.count)!)
+        self.toDoCountLabel.text = "ToDo: \(Int(allTasks))"
+        
+  
+//        self.progresCircle.update(currentValue: Float((allTasks / Float(countDone)) * 0.2) )
+        self.progresCircle.update(currentValue: Float((Float(countDone) / allTasks)) * 0.8)
     }
     
     
