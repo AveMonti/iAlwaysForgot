@@ -12,7 +12,7 @@ class ProgressCircle: CAShapeLayer {
     
     var shapeLayer: CAShapeLayer?
     var currentView: UIView?
-    
+    var trackLayer:CAShapeLayer?
     override init() {
         super.init()
     }
@@ -21,6 +21,7 @@ class ProgressCircle: CAShapeLayer {
         super.init()
         self.currentView = view
         self.shapeLayer = CAShapeLayer()
+        self.trackLayer = CAShapeLayer()
     }
     
     
@@ -32,16 +33,15 @@ class ProgressCircle: CAShapeLayer {
         let center = CGPoint(x: (currentView?.bounds.width)!/2, y: (currentView?.bounds.height)!/2)
         let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
-        let trackLayer = CAShapeLayer()
-        trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
-        trackLayer.lineWidth = 10
-        trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.lineCap = kCALineCapRound
+        trackLayer?.path = circularPath.cgPath
+        trackLayer?.strokeColor = UIColor.lightGray.cgColor
+        trackLayer?.lineWidth = 10
+        trackLayer?.fillColor = UIColor.clear.cgColor
+        trackLayer?.lineCap = kCALineCapRound
         
-        currentView?.layer.addSublayer(trackLayer)
+        currentView?.layer.addSublayer(trackLayer!)
         shapeLayer?.path = circularPath.cgPath
-        shapeLayer?.strokeColor = UIColor.blue.cgColor
+        shapeLayer?.strokeColor = UIColor.yellow.cgColor
         shapeLayer?.lineWidth = 10
         shapeLayer?.fillColor = UIColor.clear.cgColor
         shapeLayer?.lineCap = kCALineCapRound
@@ -56,11 +56,12 @@ class ProgressCircle: CAShapeLayer {
         
         basicAnimation.toValue = currentValue
         
-        basicAnimation.duration = 2
+        basicAnimation.duration = 5
         
         basicAnimation.fillMode = kCAFillModeForwards
         basicAnimation.isRemovedOnCompletion = false
         shapeLayer?.add(basicAnimation, forKey: "urSoBasic")
+        shapeLayer?.strokeEnd = CGFloat(currentValue)
     }
 }
 
