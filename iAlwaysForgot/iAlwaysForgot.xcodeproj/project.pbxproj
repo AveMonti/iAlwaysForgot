@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6EA0AC9C202DE733001F9653 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0AC9B202DE733001F9653 /* UIImage+Gif.swift */; };
+		6EA0AC9E202DE7CA001F9653 /* tenor.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6EA0AC9D202DE7CA001F9653 /* tenor.gif */; };
 		6EB74BB820246995001B1262 /* SubTaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB74BB720246995001B1262 /* SubTaskListTableViewCell.swift */; };
 		6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE401C32023033A00A2F218 /* SubTasksViewController.swift */; };
 		6EE5EB05202323FD006037F2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5EB04202323FD006037F2 /* AboutViewController.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6EA0AC9B202DE733001F9653 /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		6EA0AC9D202DE7CA001F9653 /* tenor.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tenor.gif; sourceTree = "<group>"; };
 		6EB74BB720246995001B1262 /* SubTaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListTableViewCell.swift; sourceTree = "<group>"; };
 		6EE401C32023033A00A2F218 /* SubTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTasksViewController.swift; sourceTree = "<group>"; };
 		6EE5EB04202323FD006037F2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				6EEE4D64202DA4AE00F851D8 /* ProgressCircle.swift */,
+				6EA0AC9B202DE733001F9653 /* UIImage+Gif.swift */,
 			);
 			path = ex;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 		D34B64612022712C00E2C115 /* iAlwaysForgot */ = {
 			isa = PBXGroup;
 			children = (
+				6EA0AC9D202DE7CA001F9653 /* tenor.gif */,
 				6EEE4D63202DA4A000F851D8 /* ex */,
 				D39F86B120239C9900D089C2 /* cellModel */,
 				D34B6474202275CA00E2C115 /* realmModel */,
@@ -199,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D34B646D2022712C00E2C115 /* LaunchScreen.storyboard in Resources */,
+				6EA0AC9E202DE7CA001F9653 /* tenor.gif in Resources */,
 				D34B646A2022712C00E2C115 /* Assets.xcassets in Resources */,
 				D34B64682022712C00E2C115 /* Main.storyboard in Resources */,
 			);
@@ -270,6 +277,7 @@
 				D39F86B320239DFA00D089C2 /* TaskListTableViewCell.swift in Sources */,
 				6EB74BB820246995001B1262 /* SubTaskListTableViewCell.swift in Sources */,
 				6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */,
+				6EA0AC9C202DE733001F9653 /* UIImage+Gif.swift in Sources */,
 				D34B64782022783600E2C115 /* SubTaskR.swift in Sources */,
 				6EEE4D65202DA4AE00F851D8 /* ProgressCircle.swift in Sources */,
 				D34B64652022712C00E2C115 /* MainViewController.swift in Sources */,

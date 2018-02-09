@@ -15,6 +15,7 @@ SubTaskCellButtonDelegae {
     var subtaskCellDelegate = SubTaskListTableViewCell()
     var progresCircle = ProgressCircle()
     
+    @IBOutlet weak var bgImage: UIImageView!
     @IBOutlet weak var toDoCountLabel: UILabel!
     @IBOutlet weak var doneCountLabel: UILabel!
     
@@ -28,7 +29,8 @@ SubTaskCellButtonDelegae {
         super.viewDidLoad()
         progresCircle = ProgressCircle(view: self.circleView)
         progresCircle.setup()
-        
+
+        self.bgImage.loadGif(name: "tenor")
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
             

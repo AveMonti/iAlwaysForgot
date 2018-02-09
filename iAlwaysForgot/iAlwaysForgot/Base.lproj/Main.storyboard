@@ -169,6 +169,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tenor" translatesAutoresizingMaskIntoConstraints="NO" id="rnb-UL-VtL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EW9-ii-EaP">
                                 <rect key="frame" x="0.0" y="236" width="375" height="431"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -294,7 +297,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="3c8-mU-D6z"/>
                                     <constraint firstItem="gJD-wg-ong" firstAttribute="leading" secondItem="cQg-Im-TVl" secondAttribute="leading" id="4IX-qL-lkc"/>
@@ -312,18 +315,25 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="rnb-UL-VtL" firstAttribute="top" secondItem="GgU-Ji-boK" secondAttribute="top" id="0rj-5g-2es"/>
                             <constraint firstItem="EW9-ii-EaP" firstAttribute="top" secondItem="cQg-Im-TVl" secondAttribute="bottom" constant="32" id="4Bs-cU-ax6"/>
+                            <constraint firstItem="rnb-UL-VtL" firstAttribute="trailing" secondItem="nSf-FF-n9d" secondAttribute="trailing" id="A48-Km-hJc"/>
+                            <constraint firstItem="rnb-UL-VtL" firstAttribute="leading" secondItem="nSf-FF-n9d" secondAttribute="leading" id="Ago-sL-AqM"/>
                             <constraint firstItem="cQg-Im-TVl" firstAttribute="centerX" secondItem="nSf-FF-n9d" secondAttribute="centerX" id="JEw-ax-Un7"/>
+                            <constraint firstItem="rnb-UL-VtL" firstAttribute="top" secondItem="GgU-Ji-boK" secondAttribute="top" id="PAj-IB-ARD"/>
                             <constraint firstItem="cQg-Im-TVl" firstAttribute="top" secondItem="nSf-FF-n9d" secondAttribute="top" constant="59" id="PNI-hO-qVP"/>
+                            <constraint firstItem="rnb-UL-VtL" firstAttribute="leading" secondItem="nSf-FF-n9d" secondAttribute="leading" id="QPQ-Bj-eLs"/>
                             <constraint firstItem="EW9-ii-EaP" firstAttribute="bottom" secondItem="nSf-FF-n9d" secondAttribute="bottom" id="fJX-Xx-nE6"/>
                             <constraint firstItem="EW9-ii-EaP" firstAttribute="trailing" secondItem="nSf-FF-n9d" secondAttribute="trailing" id="k9d-6P-gVX"/>
                             <constraint firstItem="EW9-ii-EaP" firstAttribute="bottom" secondItem="nSf-FF-n9d" secondAttribute="bottom" id="sVG-l5-BUj"/>
+                            <constraint firstItem="EW9-ii-EaP" firstAttribute="top" secondItem="rnb-UL-VtL" secondAttribute="bottom" id="ug6-aj-lMg"/>
                             <constraint firstItem="EW9-ii-EaP" firstAttribute="leading" secondItem="nSf-FF-n9d" secondAttribute="leading" id="ybc-Hr-1Dw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nSf-FF-n9d"/>
                     </view>
                     <connections>
                         <outlet property="addBtnOutlet" destination="AB5-IN-vZ8" id="EUH-Lw-zya"/>
+                        <outlet property="bgImage" destination="rnb-UL-VtL" id="Nnf-lW-zqf"/>
                         <outlet property="circleView" destination="cQg-Im-TVl" id="71e-Jp-0fp"/>
                         <outlet property="doneCountLabel" destination="XEf-bG-LBc" id="0q4-kc-1tu"/>
                         <outlet property="tableVIew" destination="EW9-ii-EaP" id="LyG-2l-IgM"/>
@@ -342,7 +352,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WD3-VS-h8g">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.0078431372549019607" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                         </textAttributes>
@@ -357,4 +368,7 @@
             <point key="canvasLocation" x="-417" y="34"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tenor" width="498" height="498"/>
+    </resources>
 </document>
