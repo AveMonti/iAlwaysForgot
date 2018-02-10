@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E11BD05202F3220008389CE /* space1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6E11BCFF202F3220008389CE /* space1.gif */; };
+		6E11BD06202F3220008389CE /* space2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6E11BD00202F3220008389CE /* space2.gif */; };
+		6E11BD08202F3220008389CE /* space0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6E11BD02202F3220008389CE /* space0.gif */; };
+		6E11BD09202F3220008389CE /* space4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6E11BD03202F3220008389CE /* space4.gif */; };
+		6E11BD0A202F3220008389CE /* space3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6E11BD04202F3220008389CE /* space3.gif */; };
+		6E11BD0D202F8553008389CE /* SubtaskHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E11BD0C202F8553008389CE /* SubtaskHeaderTableViewCell.swift */; };
+		6EA0AC9C202DE733001F9653 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0AC9B202DE733001F9653 /* UIImage+Gif.swift */; };
 		6EB74BB820246995001B1262 /* SubTaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB74BB720246995001B1262 /* SubTaskListTableViewCell.swift */; };
 		6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE401C32023033A00A2F218 /* SubTasksViewController.swift */; };
 		6EE5EB05202323FD006037F2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5EB04202323FD006037F2 /* AboutViewController.swift */; };
@@ -24,6 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E11BCFF202F3220008389CE /* space1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = space1.gif; sourceTree = "<group>"; };
+		6E11BD00202F3220008389CE /* space2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = space2.gif; sourceTree = "<group>"; };
+		6E11BD02202F3220008389CE /* space0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = space0.gif; sourceTree = "<group>"; };
+		6E11BD03202F3220008389CE /* space4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = space4.gif; sourceTree = "<group>"; };
+		6E11BD04202F3220008389CE /* space3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = space3.gif; sourceTree = "<group>"; };
+		6E11BD0C202F8553008389CE /* SubtaskHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		6EA0AC9B202DE733001F9653 /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		6EB74BB720246995001B1262 /* SubTaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListTableViewCell.swift; sourceTree = "<group>"; };
 		6EE401C32023033A00A2F218 /* SubTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTasksViewController.swift; sourceTree = "<group>"; };
 		6EE5EB04202323FD006037F2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				6EEE4D64202DA4AE00F851D8 /* ProgressCircle.swift */,
+				6EA0AC9B202DE733001F9653 /* UIImage+Gif.swift */,
 			);
 			path = ex;
 			sourceTree = "<group>";
@@ -94,6 +109,11 @@
 		D34B64612022712C00E2C115 /* iAlwaysForgot */ = {
 			isa = PBXGroup;
 			children = (
+				6E11BD02202F3220008389CE /* space0.gif */,
+				6E11BCFF202F3220008389CE /* space1.gif */,
+				6E11BD00202F3220008389CE /* space2.gif */,
+				6E11BD04202F3220008389CE /* space3.gif */,
+				6E11BD03202F3220008389CE /* space4.gif */,
 				6EEE4D63202DA4A000F851D8 /* ex */,
 				D39F86B120239C9900D089C2 /* cellModel */,
 				D34B6474202275CA00E2C115 /* realmModel */,
@@ -124,6 +144,7 @@
 			children = (
 				D39F86B220239DFA00D089C2 /* TaskListTableViewCell.swift */,
 				6EB74BB720246995001B1262 /* SubTaskListTableViewCell.swift */,
+				6E11BD0C202F8553008389CE /* SubtaskHeaderTableViewCell.swift */,
 			);
 			path = cellModel;
 			sourceTree = "<group>";
@@ -198,9 +219,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E11BD06202F3220008389CE /* space2.gif in Resources */,
+				6E11BD0A202F3220008389CE /* space3.gif in Resources */,
 				D34B646D2022712C00E2C115 /* LaunchScreen.storyboard in Resources */,
 				D34B646A2022712C00E2C115 /* Assets.xcassets in Resources */,
 				D34B64682022712C00E2C115 /* Main.storyboard in Resources */,
+				6E11BD08202F3220008389CE /* space0.gif in Resources */,
+				6E11BD05202F3220008389CE /* space1.gif in Resources */,
+				6E11BD09202F3220008389CE /* space4.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,9 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E11BD0D202F8553008389CE /* SubtaskHeaderTableViewCell.swift in Sources */,
 				D39F86B320239DFA00D089C2 /* TaskListTableViewCell.swift in Sources */,
 				6EB74BB820246995001B1262 /* SubTaskListTableViewCell.swift in Sources */,
 				6EE401C42023033A00A2F218 /* SubTasksViewController.swift in Sources */,
+				6EA0AC9C202DE733001F9653 /* UIImage+Gif.swift in Sources */,
 				D34B64782022783600E2C115 /* SubTaskR.swift in Sources */,
 				6EEE4D65202DA4AE00F851D8 /* ProgressCircle.swift in Sources */,
 				D34B64652022712C00E2C115 /* MainViewController.swift in Sources */,

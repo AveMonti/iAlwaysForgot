@@ -10,25 +10,34 @@ import UIKit
 import UserNotifications
 
 class SubTasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, 
-SubTaskCellButtonDelegae {
+SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
+    func addButtonPressed() {
+        self.subTaskAction(index: nil)
+    }
+    
     
     var subtaskCellDelegate = SubTaskListTableViewCell()
     var progresCircle = ProgressCircle()
     
-    @IBOutlet weak var toDoCountLabel: UILabel!
-    @IBOutlet weak var doneCountLabel: UILabel!
-    
-    @IBOutlet weak var circleView: UIView!
-    @IBOutlet weak var addBtnOutlet: UIButton!
     @IBOutlet weak var tableVIew: UITableView!
     var realm = RealmService.shared
     var subTasks:TaskListR?
+    var headerCell = SubtaskHeaderTableViewCell()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        progresCircle = ProgressCircle(view: self.circleView)
-        progresCircle.setup()
+        self.navigationController?.navigationBar.tintColor = UIColor.yellow;
+        self.navigationItem.title = "\((self.subTasks?.nameTaskList)!)"
         
+        //Header Cell
+        headerCell = tableVIew.dequeueReusableCell(withIdentifier: "subTaskHeaderCell") as! SubtaskHeaderTableViewCell
+        progresCircle = ProgressCircle(view: headerCell.circleView)
+        progresCircle.setup()
+        let randomNum:UInt32 = arc4random_uniform(5)
+        headerCell.bgImage.loadGif(name: "space\(randomNum)")
+        headerCell.addBtnOutlet.layer.cornerRadius = 0.5 * headerCell.addBtnOutlet.bounds.size.height
+        headerCell.delegate = self
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
             
@@ -39,10 +48,8 @@ SubTaskCellButtonDelegae {
             }
         }
         
-        
-        addBtnOutlet.layer.cornerRadius = 0.5 * addBtnOutlet.bounds.size.height
-        addBtnOutlet.layer.borderWidth = 3
-        addBtnOutlet.layer.borderColor = UIColor.white.cgColor
+        tableVIew.backgroundColor = .clear
+
         self.updateUI()
         
     }
@@ -56,7 +63,6 @@ SubTaskCellButtonDelegae {
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(self.subTasks?.subTaskList[selfCell.currentIndex!].remaindUID)!])
                 
             }
-            
             
             self.timedNotifications(date: picker.date,index: selfCell.currentIndex!) { (success) in
                 if success {
@@ -86,9 +92,6 @@ SubTaskCellButtonDelegae {
         self.present(alertVC, animated: true, completion: nil)
     }
     
-    
-    
-    
     func timedNotifications(date: Date,index: Int, completion: @escaping (_ Success: Bool) -> ()) {
         
         let content = UNMutableNotificationContent()
@@ -96,10 +99,6 @@ SubTaskCellButtonDelegae {
         let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
                                                     repeats: false)
-        
-        
-        
-        
         content.title = "Hey u have task to do"
         content.subtitle = "do more"
         content.body = (subTasks?.subTaskList[index].taskName)!
@@ -122,13 +121,6 @@ SubTaskCellButtonDelegae {
     }
     
     
-    
-    
-    
-    @IBAction func addBTN(_ sender: Any) {
-        self.subTaskAction(index: nil)
-    }
-    
     func subTaskAction(index: Int?){
         let alert = UIAlertController(title: "Great Title", message: "Please input something", preferredStyle: UIAlertControllerStyle.alert)
         let action = UIAlertAction(title: "Name Input", style: .default) { (alertAction) in
@@ -143,9 +135,6 @@ SubTaskCellButtonDelegae {
             
         }
         alert.addTextField { (textField) in
-            
-            
-            
             if(index != nil){
                 textField.placeholder = self.subTasks?.subTaskList[index!].taskName
             }else{
@@ -154,9 +143,7 @@ SubTaskCellButtonDelegae {
             
         }
         
-        
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
@@ -169,17 +156,13 @@ SubTaskCellButtonDelegae {
                 countDone = countDone + 1
             }
         }
-        self.doneCountLabel.text = "Done: \(countDone)"
+
         let allTasks = Float((self.subTasks?.subTaskList.count)!)
-        self.toDoCountLabel.text = "ToDo: \(Int(allTasks))"
-        
-  
-//        self.progresCircle.update(currentValue: Float((allTasks / Float(countDone)) * 0.2) )
+        self.headerCell.toDoCountLabel.text! = "ToDo: \(Int(allTasks) - countDone)"
+        self.headerCell.doneCountLabel.text = "Done: \(countDone)"
         self.progresCircle.update(currentValue: Float((Float(countDone) / allTasks)) * 0.8)
     }
     
-    
-    // table view
     func tableView(_ tableView: UITableView,
                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -206,7 +189,6 @@ SubTaskCellButtonDelegae {
         closeAction.backgroundColor = color
         
         return UISwipeActionsConfiguration(actions: [closeAction])
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -214,10 +196,7 @@ SubTaskCellButtonDelegae {
     }
     
     func tableView(_ tableView: UITableView,
-                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-    {
-        
-        
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
         let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             self.subTaskAction(index: indexPath.row)
             success(true)
@@ -241,35 +220,25 @@ SubTaskCellButtonDelegae {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
         return (subTasks?.subTaskList.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subTaskCell") as! SubTaskListTableViewCell
-        
-        
         cell.currentIndex = indexPath.row
-        cell.subTaskTitleLabel.text = self.subTasks?.subTaskList[indexPath.row].taskName
-        
-        
-        
+        cell.subTaskTitleLabel.text = " - \((self.subTasks?.subTaskList[indexPath.row].taskName)!)"
         if(self.subTasks?.subTaskList[indexPath.row].remaindUID != ""){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
             var nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
             cell.yearDateLabel.text = nssDate
-            dateFormatter.dateFormat = "hh:mm"
+            dateFormatter.dateFormat = "HH:mm"
             nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
             cell.hoursDateLabel.text = nssDate
         }else{
             cell.hoursDateLabel.text = ""
             cell.yearDateLabel.text = ""
         }
-        
-        
-        
-        
         //SubTaskTitle
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.subTaskTitleLabel.text)!)
         if(subTasks?.subTaskList[indexPath.row].isDone == true){
@@ -278,10 +247,24 @@ SubTaskCellButtonDelegae {
             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
         }
         cell.subTaskTitleLabel?.attributedText = attributeString
-        
         cell.delegate = self
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        return headerCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 240
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = UITableViewCellSelectionStyle.none
+        
     }
     
 }

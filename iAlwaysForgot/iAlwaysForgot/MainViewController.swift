@@ -17,7 +17,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // UI
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.backgroundColor = .clear
     }
 
     @IBAction func addTaskList(_ sender: Any) {
@@ -104,6 +104,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = UITableViewCellSelectionStyle.none
         let detailsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detailsVC") as! SubTasksViewController
         detailsVC.subTasks = realm.getAll()[indexPath.row]
         show(detailsVC, sender: self)
