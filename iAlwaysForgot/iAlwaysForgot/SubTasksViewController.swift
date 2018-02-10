@@ -10,28 +10,31 @@ import UIKit
 import UserNotifications
 
 class SubTasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, 
-SubTaskCellButtonDelegae {
+SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
+    func addButtonPressed() {
+        self.subTaskAction(index: nil)
+    }
+    
     
     var subtaskCellDelegate = SubTaskListTableViewCell()
     var progresCircle = ProgressCircle()
     
-    @IBOutlet weak var bgImage: UIImageView!
-    @IBOutlet weak var toDoCountLabel: UILabel!
-    @IBOutlet weak var doneCountLabel: UILabel!
-    
-    @IBOutlet weak var circleView: UIView!
-    @IBOutlet weak var addBtnOutlet: UIButton!
     @IBOutlet weak var tableVIew: UITableView!
     var realm = RealmService.shared
     var subTasks:TaskListR?
+    var headerCell = SubtaskHeaderTableViewCell()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        progresCircle = ProgressCircle(view: self.circleView)
+        //Header Cell
+        headerCell = tableVIew.dequeueReusableCell(withIdentifier: "subTaskHeaderCell") as! SubtaskHeaderTableViewCell
+        progresCircle = ProgressCircle(view: headerCell.circleView)
         progresCircle.setup()
         let randomNum:UInt32 = arc4random_uniform(5)
-        
-        self.bgImage.loadGif(name: "space\(randomNum)")
+        headerCell.bgImage.loadGif(name: "space\(randomNum)")
+        headerCell.addBtnOutlet.layer.cornerRadius = 0.5 * headerCell.addBtnOutlet.bounds.size.height
+        headerCell.delegate = self
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
             
@@ -43,7 +46,7 @@ SubTaskCellButtonDelegae {
         }
         
         tableVIew.backgroundColor = .clear
-        addBtnOutlet.layer.cornerRadius = 0.5 * addBtnOutlet.bounds.size.height
+
         self.updateUI()
         
     }
@@ -114,9 +117,6 @@ SubTaskCellButtonDelegae {
         print("Error")
     }
     
-    @IBAction func addBTN(_ sender: Any) {
-        self.subTaskAction(index: nil)
-    }
     
     func subTaskAction(index: Int?){
         let alert = UIAlertController(title: "Great Title", message: "Please input something", preferredStyle: UIAlertControllerStyle.alert)
@@ -153,10 +153,10 @@ SubTaskCellButtonDelegae {
                 countDone = countDone + 1
             }
         }
-        
+
         let allTasks = Float((self.subTasks?.subTaskList.count)!)
-        self.toDoCountLabel.text = "ToDo: \(Int(allTasks) - countDone)"
-        self.doneCountLabel.text = "Done: \(countDone)"
+        self.headerCell.toDoCountLabel.text! = "ToDo: \(Int(allTasks) - countDone)"
+        self.headerCell.doneCountLabel.text = "Done: \(countDone)"
         self.progresCircle.update(currentValue: Float((Float(countDone) / allTasks)) * 0.8)
     }
     
@@ -229,7 +229,7 @@ SubTaskCellButtonDelegae {
             dateFormatter.dateFormat = "dd-MM-yyyy"
             var nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
             cell.yearDateLabel.text = nssDate
-            dateFormatter.dateFormat = "hh:mm"
+            dateFormatter.dateFormat = "HH:mm"
             nssDate = dateFormatter.string(from: (self.subTasks?.subTaskList[indexPath.row].remaindData)!)
             cell.hoursDateLabel.text = nssDate
         }else{
@@ -248,5 +248,17 @@ SubTaskCellButtonDelegae {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        return headerCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 240
+    }
+    
+    
+    
     
 }
