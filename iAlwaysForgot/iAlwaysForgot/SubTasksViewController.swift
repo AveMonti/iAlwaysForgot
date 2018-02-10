@@ -29,8 +29,9 @@ SubTaskCellButtonDelegae {
         super.viewDidLoad()
         progresCircle = ProgressCircle(view: self.circleView)
         progresCircle.setup()
+        let randomNum:UInt32 = arc4random_uniform(5)
         
-        self.bgImage.loadGif(name: "tenor")
+        self.bgImage.loadGif(name: "space\(randomNum)")
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
             
