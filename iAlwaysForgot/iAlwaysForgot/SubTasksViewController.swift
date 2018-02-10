@@ -27,6 +27,9 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = UIColor.yellow;
+        self.navigationItem.title = "\((self.subTasks?.nameTaskList)!)"
+        
         //Header Cell
         headerCell = tableVIew.dequeueReusableCell(withIdentifier: "subTaskHeaderCell") as! SubtaskHeaderTableViewCell
         progresCircle = ProgressCircle(view: headerCell.circleView)
@@ -259,6 +262,9 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
     }
     
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = UITableViewCellSelectionStyle.none
+        
+    }
     
 }
