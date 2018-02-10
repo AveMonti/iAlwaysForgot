@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,44 +64,45 @@
                                                     <rect key="frame" x="8" y="5" width="359" height="39"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjL-BW-zla">
-                                                            <rect key="frame" x="6" y="9" width="27" height="22"/>
+                                                            <rect key="frame" x="6" y="8" width="33" height="23"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="27" id="dGS-En-d5y"/>
+                                                                <constraint firstAttribute="height" constant="23" id="04I-7q-NHz"/>
+                                                                <constraint firstAttribute="width" constant="33" id="zFU-Yw-i4a"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                            <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label with tasks List example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IW-Fv-moP">
-                                                            <rect key="frame" x="38" y="9" width="240" height="21"/>
+                                                            <rect key="frame" x="39" y="9" width="229" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99 tasks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKU-iL-xLZ">
-                                                            <rect key="frame" x="287" y="10" width="66" height="22"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="66" id="86M-hg-2EO"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <rect key="frame" x="283" y="9" width="71" height="22"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.98431372549019602" green="1" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="VjL-BW-zla" firstAttribute="bottom" secondItem="7Ia-o3-xPj" secondAttribute="bottomMargin" id="7ha-tQ-Txa"/>
-                                                        <constraint firstItem="qKU-iL-xLZ" firstAttribute="leading" secondItem="9IW-Fv-moP" secondAttribute="trailing" constant="9" id="Baj-cm-AQP"/>
-                                                        <constraint firstAttribute="bottom" secondItem="qKU-iL-xLZ" secondAttribute="bottom" constant="7" id="MFS-gA-ZGG"/>
-                                                        <constraint firstItem="9IW-Fv-moP" firstAttribute="leading" secondItem="VjL-BW-zla" secondAttribute="trailing" constant="5" id="NYc-U6-4VQ"/>
-                                                        <constraint firstItem="VjL-BW-zla" firstAttribute="top" secondItem="9IW-Fv-moP" secondAttribute="top" id="Zbk-gu-tnD"/>
-                                                        <constraint firstItem="VjL-BW-zla" firstAttribute="firstBaseline" secondItem="qKU-iL-xLZ" secondAttribute="firstBaseline" id="h7t-DW-IGl"/>
-                                                        <constraint firstAttribute="trailing" secondItem="qKU-iL-xLZ" secondAttribute="trailing" constant="6" id="iLS-SS-fjc"/>
-                                                        <constraint firstItem="VjL-BW-zla" firstAttribute="leading" secondItem="7Ia-o3-xPj" secondAttribute="leading" constant="6" id="se8-5F-0lX"/>
+                                                        <constraint firstAttribute="bottom" secondItem="VjL-BW-zla" secondAttribute="bottom" constant="8" id="1DF-2Z-4Vr"/>
+                                                        <constraint firstAttribute="trailing" secondItem="qKU-iL-xLZ" secondAttribute="trailing" constant="5" id="1R3-a0-lIr"/>
+                                                        <constraint firstItem="9IW-Fv-moP" firstAttribute="centerY" secondItem="7Ia-o3-xPj" secondAttribute="centerY" id="2hp-FG-frA"/>
+                                                        <constraint firstItem="9IW-Fv-moP" firstAttribute="leading" secondItem="VjL-BW-zla" secondAttribute="trailing" id="4rD-TD-iuq"/>
+                                                        <constraint firstItem="9IW-Fv-moP" firstAttribute="top" secondItem="7Ia-o3-xPj" secondAttribute="top" constant="9" id="8h4-0V-Ue1"/>
+                                                        <constraint firstItem="qKU-iL-xLZ" firstAttribute="top" secondItem="7Ia-o3-xPj" secondAttribute="top" constant="9" id="Cla-Zp-B8g"/>
+                                                        <constraint firstAttribute="bottom" secondItem="9IW-Fv-moP" secondAttribute="bottom" constant="9" id="FsQ-v8-gay"/>
+                                                        <constraint firstItem="VjL-BW-zla" firstAttribute="top" secondItem="7Ia-o3-xPj" secondAttribute="top" constant="8" id="GXO-Uu-1fQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="qKU-iL-xLZ" secondAttribute="bottom" constant="8" id="Tyn-cF-V0m"/>
+                                                        <constraint firstItem="VjL-BW-zla" firstAttribute="leading" secondItem="7Ia-o3-xPj" secondAttribute="leading" constant="6" id="Wah-G9-OgZ"/>
+                                                        <constraint firstItem="qKU-iL-xLZ" firstAttribute="centerY" secondItem="7Ia-o3-xPj" secondAttribute="centerY" id="ywI-6M-lxB"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="7Ia-o3-xPj" secondAttribute="bottom" constant="5" id="8Rq-du-lo4"/>
                                                 <constraint firstItem="7Ia-o3-xPj" firstAttribute="top" secondItem="hTw-uR-yTQ" secondAttribute="top" constant="5" id="Su8-iR-DFf"/>
@@ -148,7 +147,7 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xfa-dO-MUe">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.98431372549019602" green="1" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addTaskList:" destination="BYZ-38-t0r" id="geT-zN-JRg"/>
                             </connections>
@@ -350,11 +349,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2OP-O8-Mg5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WD3-VS-h8g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="WD3-VS-h8g">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.0078431372549019607" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                         </textAttributes>
