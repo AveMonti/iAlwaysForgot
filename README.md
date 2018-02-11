@@ -25,9 +25,9 @@ The application allows you to add a list of tasks, and lists of subtasks contain
     <th>Notification</th>
   </tr>
   <tr>
-    <td><img src="/iAlwaysForgot/img/add.gif" height="1298" width="600" /></td>
-    <td><img src="/iAlwaysForgot/img/done.gif" height="1298" width="600"/></td>
-    <td><img src="/iAlwaysForgot/img/not.gif" height="1298" width="600"/></td>
+    <td><img src="./img/add.gif" height="1298" width="600" /></td>
+    <td><img src="/img/done.gif" height="1298" width="600"/></td>
+    <td><img src="/img/not.gif" height="1298" width="600"/></td>
   </tr>
 </table>
 
