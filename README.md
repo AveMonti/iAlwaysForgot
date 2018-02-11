@@ -1,34 +1,33 @@
 
 <body>
-<style>
-.container{
-  background-color:#123;
-}
-</style>
-# Realm Tasker
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vulputate mauris ac fringilla porttitor. Quisque euismod vestibulum ex id mollis. Nullam dolor diam, lobortis non nunc nec, porta tristique turpis. Duis tincidunt odio enim, eu vulputate lorem maximus venenatis. Donec euismod gravida sapien, eu volutpat tortor consequat ac. Fusce maximus condimentum pharetra. Vivamus auctor gravida laoreet. Pellentesque urna urna, pretium faucibus odio sit amet, pharetra facilisis nulla.
+# iAllwaysForgot
+https://github.com/mattchojnacki/iAlwaysForgot/blob/master/img/add.gif
+<img src="./iAlwaysForgot/img/ico.png" height="120" width="120" />
 
-# In scelerisque venenatis risus, feugiat iaculis quam dapibus ac:
+Simple to do list named "iAllwaysForgot"
+The application allows you to add a list of tasks, and lists of subtasks contained in it. You can set a notification for subtasks.
 
-* Fusce venenatis justo vel lacus auctor iaculis. In hac habitasse platea dictumst.
-* Curabitur consectetur felis massa, vel sodales dui tincidunt ac.
-* Proin sed faucibus nibh.
+# Included inside:
+
+* RealM
+* Local notification
+* Circle progress bar
 
 <div class="container">
 
-<h2>Example of code</h2>
+<h2>Screen Shots</h2>
 
 <table align="center">
   <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Lastname</th>
+    <th>Add tasks</th>
+    <th>Done tasks</th>
+    <th>Notification</th>
   </tr>
   <tr>
-    <td><img src="./realmTasker/img/img.png" height="477" width="248" /></td>
-    <td><img src="https://raw.githubusercontent.com/mattchojnacki/realmTasker/master/realmTasker/img/img.png" height="477" width="248"/></td>
-    <td><img src="https://raw.githubusercontent.com/mattchojnacki/realmTasker/master/realmTasker/img/img.png" height="477" width="248"/></td>
+    <td><img src="./iAlwaysForgot/img/add.gif" height="1298" width="600" /></td>
+    <td><img src="./iAlwaysForgot/img/done.gif" height="1298" width="600"/></td>
+    <td><img src="./iAlwaysForgot/img/not.gif" height="1298" width="600"/></td>
   </tr>
 </table>
 
