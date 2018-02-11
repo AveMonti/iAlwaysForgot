@@ -2,8 +2,8 @@
 <body>
 
 # iAllwaysForgot
-https://github.com/mattchojnacki/iAlwaysForgot/blob/master/img/add.gif
-<img src="./iAlwaysForgot/img/ico.png" height="120" width="120" />
+
+<img src="/iAlwaysForgot/img/ico.png" height="120" width="120" />
 
 Simple to do list named "iAllwaysForgot"
 The application allows you to add a list of tasks, and lists of subtasks contained in it. You can set a notification for subtasks.
@@ -25,9 +25,9 @@ The application allows you to add a list of tasks, and lists of subtasks contain
     <th>Notification</th>
   </tr>
   <tr>
-    <td><img src="./iAlwaysForgot/img/add.gif" height="1298" width="600" /></td>
-    <td><img src="./iAlwaysForgot/img/done.gif" height="1298" width="600"/></td>
-    <td><img src="./iAlwaysForgot/img/not.gif" height="1298" width="600"/></td>
+    <td><img src="/iAlwaysForgot/img/add.gif" height="1298" width="600" /></td>
+    <td><img src="/iAlwaysForgot/img/done.gif" height="1298" width="600"/></td>
+    <td><img src="/iAlwaysForgot/img/not.gif" height="1298" width="600"/></td>
   </tr>
 </table>
 
