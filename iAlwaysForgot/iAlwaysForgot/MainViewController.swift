@@ -31,7 +31,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let modifyAction = UIContextualAction(style: .normal, title:  "Edit", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             self.displayAlert(currentTask: self.realm.getAll()[indexPath.row])
             success(true)
         })
@@ -54,8 +54,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func displayAlert(currentTask: TaskListR?){
         
         
-        let alert = UIAlertController(title: "Great Title", message: "Please input something", preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "Name Input", style: .default) { (alertAction) in
+        let alert = UIAlertController(title: "New task list", message: "Add the name of your task list ", preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "Add", style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
             if (currentTask != nil){
                 
@@ -72,7 +72,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             if(currentTask != nil){
                 textField.placeholder = currentTask?.nameTaskList
             }else{
-                textField.placeholder = "Enter your name"
+                textField.placeholder = "Add your tasks list"
             }
         }
         

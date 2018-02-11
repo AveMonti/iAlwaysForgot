@@ -101,6 +101,7 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
                                                     repeats: false)
         content.title = "Hey u have task to do"
         content.subtitle = "do more"
+        
         content.body = (subTasks?.subTaskList[index].taskName)!
         let identifier = UUID().uuidString
         self.realm.updateReminderUID(taskList: self.subTasks!, index: index, remaindUID: identifier)
@@ -122,7 +123,7 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
     
     
     func subTaskAction(index: Int?){
-        let alert = UIAlertController(title: "Great Title", message: "Please input something", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Add new task", message: "Enter a new task", preferredStyle: UIAlertControllerStyle.alert)
         let action = UIAlertAction(title: "Name Input", style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
             if(index != nil){
@@ -138,7 +139,7 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
             if(index != nil){
                 textField.placeholder = self.subTasks?.subTaskList[index!].taskName
             }else{
-                textField.placeholder = "Enter your name"
+                textField.placeholder = "Enter your task"
             }
             
         }
@@ -197,7 +198,7 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
     
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
-        let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let modifyAction = UIContextualAction(style: .normal, title:  "Edit", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             self.subTaskAction(index: indexPath.row)
             success(true)
         })
