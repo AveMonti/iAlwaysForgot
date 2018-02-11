@@ -3,7 +3,7 @@
 
 # iAllwaysForgot
 
-<img src="/iAlwaysForgot/img/ico.png" height="120" width="120" />
+<img src="/img/ico.png" height="120" width="120" />
 
 Simple to do list named "iAllwaysForgot"
 The application allows you to add a list of tasks, and lists of subtasks contained in it. You can set a notification for subtasks.
@@ -25,9 +25,9 @@ The application allows you to add a list of tasks, and lists of subtasks contain
     <th>Notification</th>
   </tr>
   <tr>
-    <td><img src="./img/add.gif" height="1298" width="600" /></td>
-    <td><img src="/img/done.gif" height="1298" width="600"/></td>
-    <td><img src="/img/not.gif" height="1298" width="600"/></td>
+    <td><img src="./img/add.gif" height="800" width="600" /></td>
+    <td><img src="/img/done.gif" height="900" width="600"/></td>
+    <td><img src="/img/not.gif" height="1000" width="600"/></td>
   </tr>
 </table>
 
