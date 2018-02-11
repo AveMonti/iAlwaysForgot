@@ -88,7 +88,7 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
         alertVC.isModalInPopover = true;
         alertVC.view.addSubview(picker)
         alertVC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        
+
         self.present(alertVC, animated: true, completion: nil)
     }
     
@@ -99,10 +99,32 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
         let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
                                                     repeats: false)
-        content.title = "Hey u have task to do"
-        content.subtitle = "do more"
+        content.title = "Hey u have task to do."
         
         content.body = (subTasks?.subTaskList[index].taskName)!
+        
+        guard let path = Bundle.main.path(forResource: "doit", ofType: "gif") else {return}
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            let attachments = try [UNNotificationAttachment(identifier: "logo2", url: url, options: nil)]
+            content.attachments = attachments
+        } catch{
+            print("Error")
+        }
+//
+//        guard let path = Bundle.main.path(forResource: "Apple", ofType: "png") else {return}
+//        let url = URL(fileURLWithPath: path)
+//
+//        do {
+//            let attachment = try UNNotificationAttachment(identifier: "logo", url: url, options: nil)
+//            content.attachments = [attachment]
+//        }catch{
+//            print("The attachment could not be loaded")
+//        }
+        
+        
+        //
         let identifier = UUID().uuidString
         self.realm.updateReminderUID(taskList: self.subTasks!, index: index, remaindUID: identifier)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
@@ -123,8 +145,8 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
     
     
     func subTaskAction(index: Int?){
-        let alert = UIAlertController(title: "Add new task", message: "Enter a new task", preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "Name Input", style: .default) { (alertAction) in
+        let alert = UIAlertController(title: "Add new task", message: "Enter the name of the task", preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "Add", style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
             if(index != nil){
                 self.realm.updateSubTask(taskList: self.subTasks!, index: index!, subTaskTitle: textField.text!, isDone: nil)
@@ -139,7 +161,7 @@ SubTaskCellButtonDelegae, SubTaskHeaderCellButtonDelegae {
             if(index != nil){
                 textField.placeholder = self.subTasks?.subTaskList[index!].taskName
             }else{
-                textField.placeholder = "Enter your task"
+                textField.placeholder = "Do what you can't!"
             }
             
         }

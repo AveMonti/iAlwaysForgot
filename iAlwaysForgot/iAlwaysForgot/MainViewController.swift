@@ -18,7 +18,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = .clear
+        self.updateUI()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.updateUI()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.updateUI()
+    }
+    
 
     @IBAction func addTaskList(_ sender: Any) {
         self.displayAlert(currentTask: nil)

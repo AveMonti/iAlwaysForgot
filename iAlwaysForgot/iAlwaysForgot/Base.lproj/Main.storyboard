@@ -198,21 +198,6 @@
                                                             <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AB5-IN-vZ8">
-                                                            <rect key="frame" x="29" y="89" width="67" height="28"/>
-                                                            <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="28" id="gjS-Vs-lUc"/>
-                                                                <constraint firstAttribute="width" constant="67" id="tfR-be-xd2"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="34"/>
-                                                            <state key="normal" title="+">
-                                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="addButton:" destination="wK7-q9-qbg" eventType="touchUpInside" id="Jzr-xf-jC4"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -223,23 +208,34 @@
                                                         <constraint firstItem="XEf-bG-LBc" firstAttribute="centerX" secondItem="cQg-Im-TVl" secondAttribute="centerX" id="IXv-TF-dWb"/>
                                                         <constraint firstItem="XEf-bG-LBc" firstAttribute="top" secondItem="gJD-wg-ong" secondAttribute="bottom" constant="3.5" id="RZ7-5A-Zhh"/>
                                                         <constraint firstAttribute="trailing" secondItem="XEf-bG-LBc" secondAttribute="trailing" id="Vwh-7I-L7F"/>
-                                                        <constraint firstItem="AB5-IN-vZ8" firstAttribute="leading" secondItem="cQg-Im-TVl" secondAttribute="leading" constant="29" id="beS-gL-PEA"/>
                                                         <constraint firstItem="gJD-wg-ong" firstAttribute="centerX" secondItem="cQg-Im-TVl" secondAttribute="centerX" id="dZ6-Ij-3TG"/>
-                                                        <constraint firstItem="AB5-IN-vZ8" firstAttribute="centerX" secondItem="cQg-Im-TVl" secondAttribute="centerX" id="iAe-R0-Ppe"/>
                                                         <constraint firstAttribute="width" constant="125" id="n56-5e-n7s"/>
                                                         <constraint firstAttribute="height" constant="125" id="o5l-EJ-y0l"/>
-                                                        <constraint firstAttribute="trailing" secondItem="AB5-IN-vZ8" secondAttribute="trailing" constant="29" id="w0O-eR-muv"/>
-                                                        <constraint firstItem="AB5-IN-vZ8" firstAttribute="top" secondItem="XEf-bG-LBc" secondAttribute="bottom" constant="3.5" id="zGs-rp-X9t"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AB5-IN-vZ8">
+                                                    <rect key="frame" x="332" y="196.5" width="40" height="40"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="Avb-zd-NXf"/>
+                                                        <constraint firstAttribute="height" constant="40" id="v6u-t1-TK8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" image="add"/>
+                                                    <connections>
+                                                        <action selector="addButton:" destination="wK7-q9-qbg" eventType="touchUpInside" id="Jzr-xf-jC4"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="AB5-IN-vZ8" secondAttribute="bottom" constant="3" id="0cS-pW-FMH"/>
                                                 <constraint firstItem="rnb-UL-VtL" firstAttribute="top" secondItem="jtP-u0-sfU" secondAttribute="top" id="1MT-R8-Oiy"/>
                                                 <constraint firstItem="cQg-Im-TVl" firstAttribute="centerX" secondItem="rnb-UL-VtL" secondAttribute="centerX" id="Eq3-Rk-JYD"/>
                                                 <constraint firstItem="rnb-UL-VtL" firstAttribute="leading" secondItem="jtP-u0-sfU" secondAttribute="leading" id="HOx-gP-hgU"/>
                                                 <constraint firstItem="cQg-Im-TVl" firstAttribute="centerY" secondItem="rnb-UL-VtL" secondAttribute="centerY" id="Uo0-O8-I7K"/>
                                                 <constraint firstAttribute="bottom" secondItem="rnb-UL-VtL" secondAttribute="bottom" id="fdu-w2-rJv"/>
+                                                <constraint firstAttribute="trailing" secondItem="AB5-IN-vZ8" secondAttribute="trailing" constant="3" id="jcJ-nx-JBs"/>
                                                 <constraint firstAttribute="trailing" secondItem="rnb-UL-VtL" secondAttribute="trailing" id="vEp-Bg-xg5"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -385,6 +381,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="56" height="59"/>
         <image name="clockY" width="25" height="25"/>
         <image name="logo" width="167" height="65"/>
         <image name="tenor" width="498" height="498"/>
